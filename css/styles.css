@@ -1,0 +1,11 @@
+body {
+  margin: 0%;
+}
+
+div.header {
+  background-color: #bbb;
+  height: 56px;
+  width: 100%;
+  border-bottom-color: #777;
+  border-bottom-width: 2px;
+}
