@@ -1,11 +1,7 @@
 body {
-  margin: 0%;
+  padding-top: 50px;
 }
-
-div.header {
-  background-color: #bbb;
-  height: 56px;
-  width: 100%;
-  border-bottom-color: #777;
-  border-bottom-width: 2px;
+.starter-template {
+  padding: 40px 50px;
+  text-align: center;
 }
