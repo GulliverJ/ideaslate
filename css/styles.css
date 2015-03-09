@@ -43,12 +43,9 @@
   padding-bottom: 30px;
 }
 
-.signup-req {
-  padding-left: 50px;
-}
-
-.signup-ext {
-  padding-right: 50px;
+.signup-form {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .form-group {
