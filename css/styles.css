@@ -57,6 +57,10 @@ input:hover, button:hover {
   box-shadow: 0px 0px 8px rgba(16, 16, 16, 0.5);
 }
 
+.welcome-btn:focus {
+  color: #fff;
+}
+
 .welcome-btn:hover {
   background-color: #52b08e;
   color: #fff;
