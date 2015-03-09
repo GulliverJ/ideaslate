@@ -13,6 +13,7 @@ body {
 
 input:hover, button:hover {
   opacity: 1;
+  background-color: #fff;
 }
 
 .mainsearch {
@@ -51,11 +52,14 @@ input:hover, button:hover {
   width: 250px;
   height: 64px;
   color: #fff;
-  box-shadow: 0px 0px 8px 1px #222;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 8px rgba(16, 16, 16, 0.5);
 }
 
 .welcome-btn:hover {
-  background-color: #3c9776;
+  background-color: #52b08e;
+  color: #fff;
 }
 
 .signup {
@@ -109,12 +113,15 @@ input:hover, button:hover {
   border-top-width: 1px;
   height:368px;
   text-align: center;
+  background-color: #f5f5f5;
 }
 
 .footer {
-  height: 256px;
+  padding-top: 180px;
+  height: 435px;
+  color: #eee;
   text-align: center;
-  background-color: #1a1a1a;
+  background-image: url(../img/footer_slate.jpg);
 }
 
 h3.light {
