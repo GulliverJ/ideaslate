@@ -15,7 +15,7 @@
   text-align: center;
   min-height: 250px;
   max-height: 750px;
-  height: 440px;
+  height: auto;
   border-bottom-color: #ddd;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -31,7 +31,7 @@
 .welcome-btn {
   background-color: #58bf9a;
   border-radius: 4px;
-  width: 200px;
+  width: 250px;
   height: 64px;
   color: #fff;
 }
@@ -46,10 +46,8 @@
 .signup-form {
   padding-left: 30px;
   padding-right: 30px;
-}
-
-.form-group {
-  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn-signup-div {
@@ -60,7 +58,7 @@
 .btn-signup {
   background-color: #58bf9a;
   border-radius: 4px;
-  width: 300px;
+  width: 200px;
   height: 50px;
   color: #fff;
 }

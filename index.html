@@ -60,15 +60,15 @@
           </span>
         </div>
         <p class="lead">Some descriptive text, a blurb about the website designed to pique interest and attract further reading below (or a sign-up!)</p>
-
-        <div style="padding-top: 25px"> <!-- These should be in columns really -->
-          <div style="display:inline; margin-right: 30px">
+        <div class="row" style="padding-bottom: 20px">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-5" style="padding-top: 10px">
             <button onclick="return false;" onmousedown="autoScrollTo('about');"class="btn btn-lg welcome-btn" style="min-width: 150px;" type="button">Find out more</button>
           </div>
-          <div style="display:inline; margin-left: 30px">
+          <div class="col-sm-5" style="padding-top: 10px">
             <button class="btn btn-lg welcome-btn" id="signup" style="min-width: 150px;" type="button">Sign up</button>
           </div>
-
+          <div class="col-sm-1"></div>
         </div>
       </div>
 
@@ -79,31 +79,31 @@
         <div class="row">
           <h2 style="text-align: center">Sign Up</h2>
           <form>
-            <div class="col-sm-6 signup-req">
+            <div class="col-sm-6 signup-form">
               <h3>Basic Details</h3>
 
                 <div class="form-group"> <!-- Will need to check for duplicates -->
-                  <label class="signup-form" for="username">Username:</label>
+                  <label for="username">Username:</label>
                   <input name="username" id="username" class="form-control" type="text" placeholder="Choose a username" title="Enter your username" required>
                 </div>
 
                 <div class="form-group">
-                  <label class="signup-form" for="pass">Password:</label>
+                  <label for="pass">Password:</label>
                   <input name="password" id="pass" class="form-control" type="password" placeholder="Choose a password" title="Enter your password" required>
                 </div>
 
                 <div class="form-group"> <!-- Needs JS to verify -->
-                  <label class="signup-form" for="passconf">Confirm Password:</label>
+                  <label for="passconf">Confirm Password:</label>
                   <input name="password" id="passconf" class="form-control" type="password" placeholder="Repeat your password" title="Repeat your password" required>
                 </div>
 
                 <div class="form-group"> <!-- Verification emails -->
-                  <label class="signup-form" for="emailadd">Email Address:</label>
+                  <label for="emailadd">Email Address:</label>
                   <input name="email" id="emailadd" class="form-control" type="email" placeholder="Enter your email address" title="Enter your email address" required>
                 </div>
 
             </div>
-            <div class="col-sm-6 signup-ext">
+            <div class="col-sm-6 signup-form">
               <h3>Additional Details</h3>
               <ul>
                 <li>A short bio</li>
