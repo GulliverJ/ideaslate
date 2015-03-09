@@ -18,10 +18,9 @@
     <![endif]-->
   </head>
 
-
  <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-static-top lightnav">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -32,23 +31,124 @@
           </button>
           <a class="navbar-brand" href="#">IdeaSlate</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Browse</a></li>
-            <li><a href="#">Log in</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+
+        <div id="navbar" class="collapse navbar-collapse" style="float: right;">
+          <form class="form-inline" role="form" style="padding-top: 8px;">
+            <div class="form-group">
+              <input name="username" class="form-control" type="text" placeholder="Username" title="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+              <input name="password" id="pwd" class="form-control" type="password" placeholder="Password" title="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn btn-default">Log in</button>
+          </form>
+        </div>
+
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid welcome">
 
-      <div class="starter-template">
+      <div class="welcome-main">
         <h1>Main page template</h1>
-        <p class="lead">I took this from getbootstrap.com basically.<br> I'd want this to be mobile friendly, so it makes sense to use a responsive framework from the ground up. </p>
+        <div class="input-group input-group-lg mainsearch">
+          <input type="text" class="form-control"  placeholder="Search for projects">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Search</button>
+          </span>
+        </div>
+        <p class="lead">Some descriptive text, a blurb about the website designed to pique interest and attract further reading below (or a sign-up!)</p>
+
+        <div style="padding-top: 25px"> <!-- These should be in columns really -->
+          <div style="display:inline; margin-right: 30px">
+            <button onclick="return false;" onmousedown="autoScrollTo('about');"class="btn btn-lg welcome-btn" style="min-width: 150px;" type="button">Find out more</button>
+          </div>
+          <div style="display:inline; margin-left: 30px">
+            <button class="btn btn-lg welcome-btn" id="signup" style="min-width: 150px;" type="button">Sign up</button>
+          </div>
+
+        </div>
       </div>
 
     </div><!-- /.container -->
+
+    <div class="signup" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <h2 style="text-align: center">Sign Up</h2>
+          <form>
+            <div class="col-sm-6 signup-req">
+              <h3>Basic Details</h3>
+
+                <div class="form-group"> <!-- Will need to check for duplicates -->
+                  <label class="signup-form" for="username">Username:</label>
+                  <input name="username" id="username" class="form-control" type="text" placeholder="Choose a username" title="Enter your username" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="signup-form" for="pass">Password:</label>
+                  <input name="password" id="pass" class="form-control" type="password" placeholder="Choose a password" title="Enter your password" required>
+                </div>
+
+                <div class="form-group"> <!-- Needs JS to verify -->
+                  <label class="signup-form" for="passconf">Confirm Password:</label>
+                  <input name="password" id="passconf" class="form-control" type="password" placeholder="Repeat your password" title="Repeat your password" required>
+                </div>
+
+                <div class="form-group"> <!-- Verification emails -->
+                  <label class="signup-form" for="emailadd">Email Address:</label>
+                  <input name="email" id="emailadd" class="form-control" type="email" placeholder="Enter your email address" title="Enter your email address" required>
+                </div>
+
+            </div>
+            <div class="col-sm-6 signup-ext">
+              <h3>Additional Details</h3>
+              <ul>
+                <li>A short bio</li>
+                <li>A profile picture</li>
+                <li>Specialisations/skills (user-defined tags)</li>
+                <li>Upload their CV</li>
+                <li>Add links (e.g. social media, linkedin, website)</li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div class="btn-signup-div">
+          <button type="submit" class="btn btn-lg btn-signup">Submit</button> <!-- Later, add intelligence to have text "Skip and submit" if the user has not filled out all of the additional information -->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container previews">
+      <div class="row">
+        <div class="col-sm-6 newest">
+          <p>The most recently posted project would be featured here! Auto-updating.</p>
+        </div>
+        <div class="col-sm-6 popular">
+          <p>The most popular project would be featured here! Cycling through top 10?</p>
+        </div>
+      </div>
+    </div>
+
+    <div id = "about" class="container-fluid about">
+      <h2>Text about what IdeaSlate is</h2>
+    </div>
+
+    <div class="container-fluid about">
+      <h2>Text about how to use IdeaSlate</h2>
+    </div>
+
+    <div class="container-fluid about">
+      <h2>Some more text. These three sections are basically the "about"</h2>
+    </div>
+
+    <div class="container-fluid footer">
+      <h3 class="light">Finally, the footer... not sure what to put here really. Maybe contact.<br> Our names and links to our portfolios...</h3>
+    </div>
+
 
 
     <!-- Bootstrap core JavaScript
@@ -56,6 +156,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/landing.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
     <script src="./Starter Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script> -->
   
