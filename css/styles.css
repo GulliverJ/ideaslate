@@ -1,5 +1,18 @@
+body {
+
+}
+
 .lightnav {
+  border: none;
   background: none;
+}
+
+.navform {
+  opacity: 0.75;
+}
+
+input:hover, button:hover {
+  opacity: 1;
 }
 
 .mainsearch {
@@ -12,6 +25,7 @@
 
 .welcome {
   padding: 20px;
+  color: #fff;
   text-align: center;
   min-height: 250px;
   max-height: 750px;
@@ -19,13 +33,16 @@
   border-bottom-color: #ddd;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  background: none;
 }
+
 
 .welcome-main {
   margin-left: auto;
   margin-right: auto;
   min-width: 300px;
   max-width: 768px;
+
 }
 
 .welcome-btn {
@@ -34,6 +51,11 @@
   width: 250px;
   height: 64px;
   color: #fff;
+  box-shadow: 0px 0px 8px 1px #222;
+}
+
+.welcome-btn:hover {
+  background-color: #3c9776;
 }
 
 .signup {
@@ -41,6 +63,8 @@
   border-bottom-style: solid;
   border-bottom-width: 1px;
   padding-bottom: 30px;
+
+  background-color: #f5f5f5;
 }
 
 .signup-form {
@@ -64,8 +88,9 @@
 }
 
 .previews {
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 20px;
+  height: 256px;
 }
 
 .newest {
