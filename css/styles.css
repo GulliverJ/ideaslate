@@ -11,7 +11,7 @@ body {
   opacity: 0.75;
 }
 
-input:hover, button:hover {
+input:hover, button:hover, input:focus {
   opacity: 1;
   background-color: #fff;
 }
