@@ -20,8 +20,6 @@
 
   <body>
 
-<?php include 'testphp.php';?>
-
   <div style="background-image: url(img/summer_meadow2.jpg); background-size: 1920px; background-repeat: repeat-x; background-attachment: fixed;">
     <nav class="navbar navbar-default navbar-static-top lightnav" style="background-image: url(img/50b.png); background-repeat: repeat;">
       <div class="container">
