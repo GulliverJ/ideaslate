@@ -48,7 +48,10 @@
 		
 		// Don't just blindly submit the form:
 		$('#signup-form').submit( function(event) {
-			
+			event.preventDefault();
+		});
+		
+		$('.btn-signup').click( function() {
 			if( $('#signup-form').valid() )
 			{
 				// If we're valid then try to send the data via AJAX:
@@ -84,8 +87,6 @@
 					}
 				});
 			}
-			
-			return false;
 		});
 	});
 	</script>
