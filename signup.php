@@ -20,8 +20,8 @@
         $email = $_POST['email'];
         $date = date("Y-m-d");
         // Insert data
-        $sql_insert = "INSERT INTO users (username, email, joined, password) 
-                   VALUES (?,?,?,?)";
+        $sql_insert = "INSERT INTO users (user_id, username, email, joined, password) 
+                   VALUES (DEFAULT, ?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $username);
         $stmt->bindValue(2, $email);
@@ -32,6 +32,6 @@
     catch(Exception $e) {
         die(var_dump($e));
     }
-    echo "<h3>Your're registered!</h3>";
+    echo "<h3>You're registered!</h3>";
     }
 ?>
