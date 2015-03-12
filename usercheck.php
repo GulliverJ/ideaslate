@@ -9,7 +9,7 @@
  $db_username = "b9b9fc737b7f9b";
  $db_password = "8bce3b67"; 
  
- $username = isset( $_GET['username'] ) ? $_GET['username'] : die( 'No username entered' );
+ $username = isset( $_GET['username'] ) ? $_GET['username'] : die( 'false' );
  
  try {
 	 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
@@ -20,7 +20,7 @@
 	 
 	 if( $sql_query->fetchColumn() > 0 )
 	 {
-		 die( 'Username already exists' );
+		 die( 'false' );
 	 }
 	 else
 	 {
