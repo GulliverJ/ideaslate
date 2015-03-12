@@ -187,7 +187,8 @@
 				},
 				email: {
 					required: true,
-					email: true
+					email: true,
+					remote: "emailcheck.php"
 				}
 			},
 			messages: {
@@ -202,7 +203,8 @@
 				passconf: "Your passwords must match",
 				email: {
 					required: "Please enter an email address",
-					email: "You must enter a valid email address format"
+					email: "You must enter a valid email address format",
+					remote: "There already exists a user with this email address"
 				}
 			}
 		});
