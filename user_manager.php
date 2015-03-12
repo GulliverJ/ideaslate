@@ -71,6 +71,22 @@
 	 session_write_close();
  }
  
+ // If we've been posted a username and password then we want to
+ // see if we can log in:
+ if( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
+ {
+	 if( UserLogin( $_POST['username'], $_POST['password'] ) )
+	 {
+		 // We're logged in:
+		 
+	 }
+	 else
+	 {
+		 // The login failed:
+		 die( 'Login failed, username or password is incorrect' );
+	 }
+ }
+ 
  // Checks to see if a user can be logged in, if they can be then return true and log them in
  // else return false:
  function UserLogin( $username, $password )
