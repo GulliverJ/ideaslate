@@ -91,7 +91,7 @@
 
                 <div class="form-group">
                   <label for="pass">Password:</label>
-                  <input name="password" id="pass" class="form-control" type="password" placeholder="Choose a password" title="Enter your password">
+                  <input name="pass" id="pass" class="form-control" type="password" placeholder="Choose a password" title="Enter your password">
                 </div>
 
                 <div class="form-group"> <!-- Needs JS to verify -->
@@ -100,8 +100,8 @@
                 </div>
 
                 <div class="form-group"> <!-- Verification emails -->
-                  <label for="emailadd">Email Address:</label>
-                  <input name="email" id="emailadd" class="form-control" type="email" placeholder="Enter your email address" title="Enter your email address">
+                  <label for="email">Email Address:</label>
+                  <input name="email" id="email" class="form-control" type="email" placeholder="Enter your email address" title="Enter your email address">
                 </div>
 
             </div>
@@ -175,20 +175,34 @@
 		$('#signup-form').validate({
 			rules: {
 				username: {
-					required: true
+					required: true,
+					remote: "usercheck.php"
 				},
 				pass: {
 					required: true,
 					minlength: 6, // We require at least a 6-letter password
 				},
 				passconf: {
-					required: true,
-					minlength: 6,
 					equalTo: "#pass"
 				},
 				email: {
 					required: true,
 					email: true
+				}
+			},
+			messages: {
+				username: {
+					required: "Please enter a username",
+					remote: "This username has already been taken"
+				},
+				pass: {
+					required: "Please enter a password",
+					minlength: "Your password must be at least 6 letters long"
+				},
+				passconf: "Your passwords must match",
+				email: {
+					required: "Please enter an email address",
+					email: "You must enter a valid email address format"
 				}
 			}
 		});
