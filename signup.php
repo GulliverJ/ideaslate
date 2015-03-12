@@ -21,7 +21,7 @@
         $date = date("Y-m-d");
         // Insert data
         $sql_insert = "INSERT INTO users (user_id, username, email, joined, password) 
-                   VALUES (DEFAULT, ?,?,?,?)";
+                   VALUES (NULL, ?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $username);
         $stmt->bindValue(2, $email);
