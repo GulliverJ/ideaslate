@@ -14,7 +14,7 @@
  
  // Get our user-data:
  $username = isset( $_POST['username'] ) ? $_POST['username'] : die( "You must enter a valid username" );
- $password = isset( $_POST['password'] ) ? $_POST['password'] : die( "You must enter a valid password" );
+ $password = isset( $_POST['pass'] ) ? $_POST['pass'] : die( "You must enter a valid password" );
  $email = isset( $_POST['email'] ) ? $_POST['email'] : "";
  
  try {
