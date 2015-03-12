@@ -1,6 +1,8 @@
 <html>
 <body>
 
+//Hey there! This is a test commit.
+
 <?php
     // DB connection info
     $host = "eu-cdbr-azure-north-c.cloudapp.net";
