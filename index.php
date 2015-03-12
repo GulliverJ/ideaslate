@@ -16,80 +16,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <!-- Verify Javascript Script -->
-    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-    
-    <!-- Signup Form JavaScript -->
-    <script type="text/javascript">
-	// Verify our signup form and AJAXify:
-	$(document).ready( function() {
-		// Set up our verification properties:
-		$('#signup-form').validate({
-			rules: {
-				username: {
-					required: true
-				},
-				pass: {
-					required: true,
-					minlength: 6, // We require at least a 6-letter password
-				},
-				passconf: {
-					required: true,
-					minlength: 6,
-					equalTo: "#pass"
-				},
-				emailadd: {
-					required: true,
-					email: true
-				}
-			}
-		});
-		
-		// Don't just blindly submit the form:
-		$('#signup-form').submit( function(event) {
-			event.preventDefault();
-		});
-		
-		$('.btn-signup').click( function() {
-			if( $('#signup-form').valid() )
-			{
-				// If we're valid then try to send the data via AJAX:
-				$.ajax({
-					url: 'signup.php',
-					type: 'POST',
-					data: $('#signup-form').serialize(),
-					success: function( data ) {
-						$('#signup-form').fadeOut( 1000, function() {
-							$('#signup-form').hide();
-							
-							if( !data )
-							{
-								$('#signup-form').after( '<p class="submission-text" style="display:none">Congratulations, you have successfully signed up; you can now log-on when you wish</p>' );
-							}
-							else
-							{
-								var html = '<p class="submission-text" style="display:none">';
-								var full = html.concat( data, '</p>' );
-								$('#signup-form').after( full );
-							}
-							
-							$('.submission-text').fadeIn( 500 );
-						});
-					},
-					error: function( data ) {
-						// ToDo: Make this more useful:
-						$('#signup-form').fadeOut( 1000, function() {
-							$('#signup-form').hide();
-							$('#signup-form').after( '<p class="submission-text" style="display:none">Due to an internal server error, we are unable to process your request at the moment</p>' );
-							$('.submission-text').fadeIn( 500 );
-						});
-					}
-				});
-			}
-		});
-	});
-	</script>
+   
   </head>
 
   <body>
@@ -151,7 +78,7 @@
 
     <div class="signup" style="display: none;">
       <div class="container">
-        <form name="signup" method="post" action="signup.php" id="signup-form">
+        <form name="signup" method="post" action="signup.php" id="signup-form" novalidate>
         <div class="row">
           <h2 style="text-align: center">Sign Up</h2>
             <div class="col-sm-6 signup-form">
@@ -159,22 +86,22 @@
 
                 <div class="form-group"> <!-- Will need to check for duplicates -->
                   <label for="username">Username:</label>
-                  <input name="username" id="username" class="form-control" type="text" placeholder="Choose a username" title="Enter your username" required>
+                  <input name="username" id="username" class="form-control" type="text" placeholder="Choose a username" title="Enter your username">
                 </div>
 
                 <div class="form-group">
                   <label for="pass">Password:</label>
-                  <input name="password" id="pass" class="form-control" type="password" placeholder="Choose a password" title="Enter your password" required>
+                  <input name="password" id="pass" class="form-control" type="password" placeholder="Choose a password" title="Enter your password">
                 </div>
 
                 <div class="form-group"> <!-- Needs JS to verify -->
                   <label for="passconf">Confirm Password:</label>
-                  <input name="password" id="passconf" class="form-control" type="password" placeholder="Repeat your password" title="Repeat your password" required>
+                  <input name="passconf" id="passconf" class="form-control" type="password" placeholder="Repeat your password" title="Repeat your password">
                 </div>
 
                 <div class="form-group"> <!-- Verification emails -->
                   <label for="emailadd">Email Address:</label>
-                  <input name="email" id="emailadd" class="form-control" type="email" placeholder="Enter your email address" title="Enter your email address" required>
+                  <input name="email" id="emailadd" class="form-control" type="email" placeholder="Enter your email address" title="Enter your email address">
                 </div>
 
             </div>
@@ -228,13 +155,86 @@
 
 
 
+ 	<!-- Verify Javascript Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/landing.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
     <script src="./Starter Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script> -->
+
+	<!-- Signup Form JavaScript -->
+    <script type="text/javascript">
+	// Verify our signup form and AJAXify:
+	$(document).ready( function() {
+		// Set up our verification properties:
+		$('#signup-form').validate({
+			rules: {
+				username: {
+					required: true
+				},
+				pass: {
+					required: true,
+					minlength: 6, // We require at least a 6-letter password
+				},
+				passconf: {
+					required: true,
+					minlength: 6,
+					equalTo: "#pass"
+				},
+				email: {
+					required: true,
+					email: true
+				}
+			}
+		});
+		
+		// Don't just blindly submit the form:
+		$('#signup-form').submit( function(event) {
+			event.preventDefault();
+			
+			if( $('#signup-form').valid() )
+			{
+				// If we're valid then try to send the data via AJAX:
+				$.ajax({
+					url: 'signup.php',
+					type: 'POST',
+					data: $('#signup-form').serialize(),
+					success: function( data ) {
+						$('#signup-form').fadeOut( 1000, function() {
+							$('#signup-form').hide();
+							
+							if( !data )
+							{
+								$('#signup-form').after( '<p class="submission-text" style="display:none">Congratulations, you have successfully signed up; you can now log-on when you wish</p>' );
+							}
+							else
+							{
+								var html = '<p class="submission-text" style="display:none">';
+								var full = html.concat( data, '</p>' );
+								$('#signup-form').after( full );
+							}
+							
+							$('.submission-text').fadeIn( 500 );
+						});
+					},
+					error: function( data ) {
+						// ToDo: Make this more useful:
+						$('#signup-form').fadeOut( 1000, function() {
+							$('#signup-form').hide();
+							$('#signup-form').after( '<p class="submission-text" style="display:none">Due to an internal server error, we are unable to process your request at the moment</p>' );
+							$('.submission-text').fadeIn( 500 );
+						});
+					}
+				});
+			}
+		});
+		
+	});
+	</script>
 
 </body></html>
