@@ -18,7 +18,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $email = $_POST['email'];
-        $date = date("YYYY-mm-dd");
+        $date = date("Y-m-d");
         // Insert data
         $sql_insert = "INSERT INTO users (username, email, joined, password) 
                    VALUES (?,?,?,?)";
