@@ -9,7 +9,7 @@
  $db_username = "b9b9fc737b7f9b";
  $db_password = "8bce3b67"; 
  
- $username = isset( $_POST['username'] ) ? $_POST['username'] : die( 'No username entered' );
+ $username = isset( $_GET['username'] ) ? $_GET['username'] : die( 'No username entered' );
  
  try {
 	 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
