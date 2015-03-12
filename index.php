@@ -77,11 +77,11 @@
 
     <div class="signup" style="display: none;">
       <div class="container">
+        <form name="login" method="post" action="signup.php">
         <div class="row">
           <h2 style="text-align: center">Sign Up</h2>
-          <form>
             <div class="col-sm-6 signup-form">
-              <h3>Basic Details</h3>
+                <h3>Basic Details</h3>
 
                 <div class="form-group"> <!-- Will need to check for duplicates -->
                   <label for="username">Username:</label>
@@ -114,11 +114,11 @@
                 <li>Add links (e.g. social media, linkedin, website)</li>
               </ul>
             </div>
-          </form>
         </div>
         <div class="btn-signup-div">
-          <button type="submit" class="btn btn-lg btn-signup">Submit</button> <!-- Later, add intelligence to have text "Skip and submit" if the user has not filled out all of the additional information -->
+          <button type="submit" name="submit" class="btn btn-lg btn-signup">Submit</button> <!-- Later, add intelligence to have text "Skip and submit" if the user has not filled out all of the additional information -->
         </div>
+        </form>
       </div>
     </div>
 
