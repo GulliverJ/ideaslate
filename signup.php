@@ -22,17 +22,17 @@
 	 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	 
 	 // Check to see if that username or password exist:
-	 $sql_statement = $connection->prepare( "SELECT count(*) FROM users WHERE username = ?" );
+	 $sql_statement = $connection->prepare( "SELECT COUNT(*) FROM users WHERE `username` = ? LIMIT 1" );
 	 $sql_statement->execute( array( $username ) );
-	 if( $sql_statement->fetch( PDO::FETCH_NUM ) > 0 )
+	 if( $sql_statement->fetchColumn() > 0 )
 	 {
 		 // That username already exists:
 		 die( "That username already exists" );
 	 }
 	 
-	 $sql_statement = $connection->prepare( "SELECT count(*) FROM users WHERE email = ?" );
+	 $sql_statement = $connection->prepare( "SELECT COUNT(*) FROM users WHERE `email` = ? LIMIT 1" );
 	 $sql_statement->execute( array( $email ) );
-	 if( $sql_statement->fetch( PDO::FETCH_NUM ) > 0 )
+	 if( $sql_statement->fetchColumn() > 0 )
 	 {
 		 // That email is already used:
 		 die( "There already exists an account under that email address" );
