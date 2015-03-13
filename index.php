@@ -250,6 +250,7 @@
 				});
 			}
 			
+			$('#signup-form').unbind( 'submit' );
 			return false;
 		});
 		
