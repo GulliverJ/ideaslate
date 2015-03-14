@@ -140,7 +140,7 @@
 		 die( 'false' );
 	 }
  }
- else if( isset( $_POST['logout'] ) && $_POST['logout'] === true )
+ else if( isset( $_POST['logout'] ) && $_POST['logout'] == true )
  {
 	 Logout();
  }
