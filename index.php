@@ -222,7 +222,7 @@
 					type: 'POST',
 					data: $('#signup-form').serialize(),
 					success: function( data ) {
-						$('#signup-form').fadeOut( 1000, function() {
+						$('#signup-form').fadeOut( 500, function() {
 							$('#signup-form').hide();
 							
 							if( !data )
