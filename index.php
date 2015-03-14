@@ -221,8 +221,7 @@
 					url: 'signup.php',
 					type: 'POST',
 					data: $('#signup-form').serialize(),
-          console.log(data);
-					success: function( data ) {
+					success: function( data.toString ) {
 						$('#signup-form').fadeOut( 1000, function() {
 							$('#signup-form').hide();
 							
@@ -242,7 +241,7 @@
 					},
 					error: function( data ) {
 						// ToDo: Make this more useful:
-						$('#signup-form').fadeOut( 1000, function() {
+						$('#signup-form').fadeOut( 500, function() {
 							$('#signup-form').hide();
 							$('#signup-form').after( '<p class="submission-text" style="display:none">Due to an internal server error, we are unable to process your request at the moment</p>' );
 							$('.submission-text').fadeIn( 500 );
