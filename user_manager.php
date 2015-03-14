@@ -104,6 +104,7 @@
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
 		 {
+			 var_dump( $user );
 			 if( password_verify( $password, $user['password'] ) )
 			 {
 				 $_SESSION['username'] = $username;
