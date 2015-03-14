@@ -78,13 +78,26 @@
 	 if( UserLogin( $_POST['username'], $_POST['password'] ) )
 	 {
 		 // We're logged in:
-		 
+		 die( 'true' );
 	 }
 	 else
 	 {
 		 // The login failed:
-		 die( 'Login failed, username or password is incorrect' );
+		 die( 'false' );
 	 }
+ }
+ 
+ // Performs a simple boolean check to see if we're logged in:
+ function LoggedIn()
+ {
+	 // Make sure the session is valid:
+	 CheckSession();
+	 if( isset( $_SESSION['username'] ) )
+	 {
+		 return true;
+	 }
+	 
+	 return false;
  }
  
  // Checks to see if a user can be logged in, if they can be then return true and log them in
