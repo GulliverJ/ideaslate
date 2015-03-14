@@ -97,7 +97,7 @@
 		 $connection = new PDO( "mysql:host=$server_name,dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_query = $connection->prepare( "SELECT username, password FROM users WHERE `username` = ? LIMIT 1" );
+		 $sql_query = $connection->prepare( "SELECT username, password FROM users WHERE `username` = ?" );
 		 $sql_query->execute( array( $username ) );
 		 
 		 // Does the user exist?
