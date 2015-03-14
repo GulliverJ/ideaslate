@@ -210,7 +210,7 @@
 		});
 		
 		// Don't just blindly submit the form:
-		$('#signup-form').submit( function(event) {
+		$('#signup-form.btn-signup').click( function(event) {
 			event.preventDefault();
 			event.stopImmediatePropagation();
 			
@@ -250,7 +250,6 @@
 				});
 			}
 			
-			$(this).unlink('submit');
 			return false;
 		});
 		
