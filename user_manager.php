@@ -101,10 +101,10 @@
 		 $sql_query->execute( array( $username ) );
 		 
 		 // Does the user exist?
-		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
+		 $result = $sql_query->setFetchMode( PDO::FETCH_NUM );
 		 if( $user = $sql_query->fetch() )
 		 {
-			 if( password_verify( $password, $user['PASSWORD'] ) )
+			 if( password_verify( $password, $user[2] ) )
 			 {
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
