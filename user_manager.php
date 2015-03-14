@@ -104,7 +104,7 @@
 		 $result = $sql_query->setFetchMode( PDO::FETCH_NUM );
 		 if( $user = $sql_query->fetch() )
 		 {
-			 if( password_verify( $password, $user[2] ) )
+			 if( password_verify( $password, $user[1] ) )
 			 {
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
