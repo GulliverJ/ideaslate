@@ -50,7 +50,7 @@
 		if( LoggedIn() )
 		{
 		?>
-        <h2>Logged In!!! <a id="log-out">Log Out</a></h2>
+        <h2>Logged In!!! <a id="log-out" href="#">Log Out</a></h2>
         <?php
 		}
 		else
