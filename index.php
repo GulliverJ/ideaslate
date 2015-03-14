@@ -214,7 +214,10 @@
 			event.preventDefault();
 		});
 		
-		$('.btn-submit').click( function(event) {			
+		$('#signup-form.btn-submit').click( function(event) {
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			
 			if( $('#signup-form').valid() )
 			{
 				// If we're valid then try to send the data via AJAX:
@@ -250,6 +253,9 @@
 					}
 				});
 			}
+			
+			$(this).unlink('submit');
+			return false;
 		});
 		
 	});
