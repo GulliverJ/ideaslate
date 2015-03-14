@@ -100,6 +100,9 @@
 		 $sql_query = $connection->prepare( "SELECT password FROM users WHERE username = ? LIMIT 1" );
 		 $sql_query->execute( array( $username ) );
 		 
+		 var_dump( $sql_query );
+		 var_dump( $username, $password );
+		 
 		 // Does the user exist?
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
@@ -117,6 +120,7 @@
 	 }
 	 catch( PDOException $e )
 	 {
+		 var_dump( $e );
 		 return false;
 	 }
 	 
