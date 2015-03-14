@@ -101,10 +101,10 @@
 		 $sql_query->execute( array( $username ) );
 		 
 		 // Does the user exist?
-		 $result = $sql_query->setFetchMode( PDO::FETCH_NUM );
+		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
 		 {
-			 if( password_verify( $password, $user[1] ) )
+			 if( password_verify( $password, $user['password'] ) )
 			 {
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
@@ -126,7 +126,9 @@
  // see if we can log in:
  if( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
  {
-	 if( UserLogin( $_POST['username'], $_POST['password'] ) )
+	 $username = $_POST['username'];
+	 $password = $_POST['password'];
+	 if( UserLogin( $username, $password ) )
 	 {
 		 // We're logged in:
 		 die( 'true' );
