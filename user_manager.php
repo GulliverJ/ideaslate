@@ -120,7 +120,7 @@
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
 		 {
-			 if( password_verify( $password, $user['password'] ) )
+			 if( password_verify( $password, $user['PASSWORD'] ) )
 			 {
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
