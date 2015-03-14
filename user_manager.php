@@ -94,20 +94,17 @@
  	 $db_password = "8bce3b67"; 
 	 
 	 try {
-		 $connection = new PDO( "mysql:host=$server_name,dbname=$db_name", $db_username, $db_password );
+		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_query = $connection->prepare( "SELECT password FROM users WHERE username = ? LIMIT 1" );
+		 $sql_query = $connection->prepare( "SELECT password FROM users WHERE `username` = ? LIMIT 1" );
 		 $sql_query->execute( array( $username ) );
 		 
-		 var_dump( $sql_query );
-		 var_dump( $username, $password );
-		 
+	 
 		 // Does the user exist?
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
 		 {
-			 var_dump( $user );
 			 if( password_verify( $password, $user['password'] ) )
 			 {
 				 $_SESSION['username'] = $username;
@@ -120,7 +117,6 @@
 	 }
 	 catch( PDOException $e )
 	 {
-		 var_dump( $e );
 		 return false;
 	 }
 	 

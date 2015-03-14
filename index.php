@@ -276,7 +276,7 @@
 			return false;
 		});
 		
-		/*$('#login-form').submit( function(event) {
+		$('#login-form').submit( function(event) {
 			event.preventDefault();
 			event.stopImmediatePropagation();
 			
@@ -299,7 +299,7 @@
 					alert( 'Server Error (sigh)' );
 				}
 			});
-		});*/
+		});
 		
 	});
 	</script>
