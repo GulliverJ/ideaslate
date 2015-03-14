@@ -50,7 +50,7 @@
 		if( LoggedIn() )
 		{
 		?>
-        <h2>Logged In!!!</h2>
+        <h2>Logged In!!! <a id="log-out">Log Out</a></h2>
         <?php
 		}
 		else
@@ -294,6 +294,20 @@
 						// We logged in successfully, refresh the page:
 						location.reload();
 					}
+				},
+				error: function( data ) {
+					alert( 'Server Error (sigh)' );
+				}
+			});
+		});
+		
+		$('#login-form').click( function(event) {
+			$.ajax({
+				url: 'user_manager.php',
+				type: 'POST',
+				data: { logout : true },
+				success: function( data ) {
+					location.reload();
 				},
 				error: function( data ) {
 					alert( 'Server Error (sigh)' );
