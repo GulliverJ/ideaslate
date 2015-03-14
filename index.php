@@ -221,7 +221,7 @@
 					url: 'signup.php',
 					type: 'POST',
 					data: $('#signup-form').serialize(),
-          debugger;
+          console.log(data);
 					success: function( data ) {
 						$('#signup-form').fadeOut( 1000, function() {
 							$('#signup-form').hide();
