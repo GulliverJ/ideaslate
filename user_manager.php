@@ -71,22 +71,6 @@
 	 session_write_close();
  }
  
- // If we've been posted a username and password then we want to
- // see if we can log in:
- if( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
- {
-	 if( UserLogin( $_POST['username'], $_POST['password'] ) )
-	 {
-		 // We're logged in:
-		 die( 'true' );
-	 }
-	 else
-	 {
-		 // The login failed:
-		 die( 'false' );
-	 }
- }
- 
  // Performs a simple boolean check to see if we're logged in:
  function LoggedIn()
  {
@@ -136,6 +120,22 @@
 	 }
 	 
 	 return false;
+ }
+
+ // If we've been posted a username and password then we want to
+ // see if we can log in:
+ if( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
+ {
+	 if( UserLogin( $_POST['username'], $_POST['password'] ) )
+	 {
+		 // We're logged in:
+		 die( 'true' );
+	 }
+	 else
+	 {
+		 // The login failed:
+		 die( 'false' );
+	 }
  }
 
 ?>
