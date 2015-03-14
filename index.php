@@ -212,6 +212,10 @@
 		// Don't just blindly submit the form:
 		$('#signup-form').submit( function(event) {
 			event.preventDefault();
+		});
+		
+		$('#signup-form.btn-submit').click( function(event) {
+			event.preventDefault();
 			event.stopImmediatePropagation();
 			
 			if( $('#signup-form').valid() )
