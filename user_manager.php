@@ -35,10 +35,11 @@
 	 // Check that we're a valid user (nothing has been spoofed):
 	 if( isset( $_SESSION['username'] ) )
 	 {
-		 $server_name = "eu-cdbr-azure-north-c.cloudapp.net";
- 		 $db_name = "isdevAnAqTBTyio8";
- 		 $db_username = "b9b9fc737b7f9b";
- 		 $db_password = "8bce3b67"; 
+		 $server_details = include( 'server_details.php' );
+		 $server_name = $server_details['server_name'];
+		 $db_name = $server_details['db_name'];
+		 $db_username = $server_details['db_username'];
+		 $db_password = $server_details['db_password'];
 		 
 		 try {
 			 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
@@ -71,38 +72,37 @@
 	 session_write_close();
  }
  
- // If we've been posted a username and password then we want to
- // see if we can log in:
- if( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
+ // Performs a simple boolean check to see if we're logged in:
+ function LoggedIn()
  {
-	 if( UserLogin( $_POST['username'], $_POST['password'] ) )
+	 // Make sure the session is valid:
+	 CheckSession();
+	 if( isset( $_SESSION['username'] ) )
 	 {
-		 // We're logged in:
-		 
+		 return true;
 	 }
-	 else
-	 {
-		 // The login failed:
-		 die( 'Login failed, username or password is incorrect' );
-	 }
+	 
+	 return false;
  }
  
  // Checks to see if a user can be logged in, if they can be then return true and log them in
  // else return false:
  function UserLogin( $username, $password )
  {
-	 $server_name = "eu-cdbr-azure-north-c.cloudapp.net";
- 	 $db_name = "isdevAnAqTBTyio8";
- 	 $db_username = "b9b9fc737b7f9b";
- 	 $db_password = "8bce3b67"; 
+	 $server_details = include( 'server_details.php' );
+	 $server_name = $server_details['server_name'];
+ 	 $db_name = $server_details['db_name'];
+ 	 $db_username = $server_details['db_username'];
+ 	 $db_password = $server_details['db_password']; 
 	 
 	 try {
-		 $connection = new PDO( "mysql:host=$server_name,dbname=$db_name", $db_username, $db_password );
+		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_query = $connection->prepare( "SELECT username, password FROM users WHERE `username` = ? LIMIT 1" );
+		 $sql_query = $connection->prepare( "SELECT password FROM users WHERE `username` = ? LIMIT 1" );
 		 $sql_query->execute( array( $username ) );
 		 
+	 
 		 // Does the user exist?
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
@@ -123,6 +123,28 @@
 	 }
 	 
 	 return false;
+ }
+
+ // If we've been posted a username and password then we want to
+ // see if we can log in:
+ if( isset( $_POST['username'] ) && isset( $_POST['password'] ) )
+ {
+	 $username = $_POST['username'];
+	 $password = $_POST['password'];
+	 if( UserLogin( $username, $password ) )
+	 {
+		 // We're logged in:
+		 die( 'true' );
+	 }
+	 else
+	 {
+		 // The login failed:
+		 die( 'false' );
+	 }
+ }
+ else if( isset( $_POST['logout'] ) && $_POST['logout'] == true )
+ {
+	 Logout();
  }
 
 ?>

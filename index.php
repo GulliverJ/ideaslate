@@ -1,3 +1,13 @@
+<?php
+
+/*	Authors: Thomas Russell <thomas.russell97@googlemail.com>; Gulliver Johnson <gulliver.johnson@gmail.com>
+ *	Purpose: Main page and template handling engine for the IdeaSlate website
+ */
+
+
+ require( 'user_manager.php' );
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +46,17 @@
         </div>
 
         <div id="navbar" class="collapse navbar-collapse" style="float: right; margin-bottom: 8px;">
-          <form class="form-inline" role="form" style="padding-top: 8px;">
+        <?php 
+		if( LoggedIn() )
+		{
+		?>
+        <h2>Logged In!!! <a id="log-out" href="#">Log Out</a></h2>
+        <?php
+		}
+		else
+		{
+		?>
+          <form class="form-inline" role="form" id="login-form" method="post" action="user_manager.php" style="padding-top: 8px;">
             <div class="form-group">
               <input name="username" class="form-control navform" type="text" placeholder="Username" title="Enter your username" required>
             </div>
@@ -46,6 +66,9 @@
             </div>
             <button type="submit" class="btn btn-default navform">Log in</button>
           </form>
+        <?php 
+		}
+		?>
         </div>
 
       </div>
@@ -222,7 +245,7 @@
 					type: 'POST',
 					data: $('#signup-form').serialize(),
 					success: function( data ) {
-						$('#signup-form').fadeOut( 1000, function() {
+						$('#signup-form').fadeOut( 500, function() {
 							$('#signup-form').hide();
 							
 							if( !data )
@@ -249,9 +272,52 @@
 					}
 				});
 			}
+<<<<<<< HEAD
 			
 			$('#signup-form').unbind( 'submit' );
+=======
+
+>>>>>>> origin/dev
 			return false;
+		});
+		
+		$('#login-form').submit( function(event) {
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			
+			$.ajax({
+				url: 'user_manager.php',
+				type: 'POST',
+				data: $('#login-form').serialize(),
+				success: function( data ) {
+					if( data == 'false' )
+					{
+						alert( 'Invalid Login Details (note, this is a placeholder, will be fancy animation or w/e)' );
+					}
+					else
+					{
+						// We logged in successfully, refresh the page:
+						location.reload();
+					}
+				},
+				error: function( data ) {
+					alert( 'Server Error (sigh)' );
+				}
+			});
+		});
+		
+		$('#login-form').click( function(event) {
+			$.ajax({
+				url: 'user_manager.php',
+				type: 'POST',
+				data: { logout : true },
+				success: function( data ) {
+					location.reload();
+				},
+				error: function( data ) {
+					alert( 'Server Error (sigh)' );
+				}
+			});
 		});
 		
 	});
