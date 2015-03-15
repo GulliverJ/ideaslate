@@ -12,7 +12,7 @@
 	 // Make sure that we're returning a valid result at least:
 	 if( $max - $min < $quantity )
 	 {
-		 $max = $min + $quantity;
+		 return shuffle( range( $min, $max ) );
 	 }
 	 
 	 return array_slice( shuffle( range( $min, $max ) ), 0, $quantity );
