@@ -7,10 +7,11 @@
  
  require( 'passwordlib/password.php' );
  
- $server_name = "eu-cdbr-azure-north-c.cloudapp.net";
- $db_name = "isdevAnAqTBTyio8";
- $db_username = "b9b9fc737b7f9b";
- $db_password = "8bce3b67"; 
+ $server_details = include( 'server_details.php' );
+ $server_name = $server_details['server_name'];
+ $db_name = $server_details['db_name'];
+ $db_username = $server_details['db_username'];
+ $db_password = $server_details['db_password'];  
  
  // Get our user-data:
  $username = isset( $_POST['username'] ) ? $_POST['username'] : die( "You must enter a valid username" );
