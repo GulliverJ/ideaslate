@@ -301,7 +301,7 @@
 			});
 		});
 		
-		$('#login-form').click( function(event) {
+		$('#log-out').click( function(event) {
 			$.ajax({
 				url: 'user_manager.php',
 				type: 'POST',
