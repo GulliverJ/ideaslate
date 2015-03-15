@@ -272,12 +272,7 @@
 					}
 				});
 			}
-<<<<<<< HEAD
 			
-			$('#signup-form').unbind( 'submit' );
-=======
-
->>>>>>> origin/dev
 			return false;
 		});
 		
