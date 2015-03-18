@@ -1,0 +1,258 @@
+body {
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: none;
+    background-image: url(../img/texture_bg.jpg);
+}
+
+* {
+  margin: 0;
+  padding: none;
+}
+
+hr {
+  background-color: #d6d1c1;
+  color: #d6d1c1;
+}
+
+.wrapper {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topbar {
+  max-height: 70px;
+  height: 70px;
+  padding-top: 6px;
+}
+
+.header-base {
+  margin: 0px;
+  height: 160px;
+  width: 100%;
+  background: none;
+}
+
+.logo {
+  width: 296px;
+  float: left;
+  display: block;
+}
+
+.quicksearch {
+  float: right;
+}
+
+.quicksearch-in {
+  margin-top: 10px;
+  width: 640px;
+  height: 47px;
+  border: none;
+  background-color: #242925;
+  padding-left: 12px;
+  font-family: "Helvetica Neue", Arial, Sans-Serif;
+  font-weight: lighter;
+  font-size: 14pt;
+  color: #ddd;
+}
+
+.quicksearch-btn {
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  border: none;
+  background-color: #242925;
+}
+
+p.signedin-as {
+  padding-top: 14px;
+  padding-left: 6px;
+  margin: none;
+  line-height: 0px;
+  font-size: 9pt;
+  color: #747066;
+}
+
+p.signedin-name {
+  margin-top: 16px;
+  line-height: 0px;
+  font-size: 12pt;
+  color: #fff;
+}
+
+.toolbar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 64px;
+}
+
+.profile {
+  float: left;
+  padding: 0;
+  width: 296px;
+  height: 64px;
+  font-family: "Helvetica Neue", Arial, Sans-Serif;
+  background-image: url(../img/header_elem_fill.png);
+}
+
+.panel-menu {
+  margin: 0;
+  height: 64px;
+  width: 228px;
+  float: right;
+}
+
+.panel-menu-item {
+  float: left;
+  height: 64px;
+  width: 64px;
+  margin-left: 12px;
+  background-image: url(../img/header_elem_fill.png);
+}
+
+.profile:hover, .panel-menu-item:hover {
+  background-color: #222;
+  cursor: pointer;
+}
+
+.user-home {
+  height: calc(100vh - 160px);
+  width: 100%;
+  background: none;
+  position: fixed;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #292e2b;
+}
+
+.profile-panel {
+  background-color: #272c2a;
+  height: 100%;
+  width: 100%;
+}
+
+.profile-panel-sidebar {
+  width: 296px;
+  height: calc(100vh - 160px);
+  background-color: #181a19;
+  float: left;
+  position: static;
+}
+
+.profile-panel-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-left-color: #232624;
+  border-right-color: #232624;
+  margin-left: 308px;
+  color: #eee;
+  height: calc(100vh - 160px);
+}
+
+.search-panel {
+  color: #fff;
+  background: none;
+  height: 100%;
+  width: 100%;
+}
+
+.create-panel {
+  color: #222;
+  background-color: #e0dbce;
+  background-image: url(../img/header_shadow.png);
+  background-repeat: repeat-x;
+  height: 100%;
+  width: 100%;
+  border-bottom-color: #e0dbce;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.dashboard {
+  background-color: #ede8d8;
+  width: 100%;
+  height: 100%;
+
+}
+
+.menu {
+  width: 296px;
+  margin-right: 12px;
+  height: 100%;
+  position: fixed;
+}
+
+.menuitem {
+  width: 296px;
+  background:none;
+  border: none;
+  height: 48px;
+  margin-top:12px;
+
+  color: #192022;
+  font-family: "Helvetica Neue", Helvetica Neue, Sans-Serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 16pt;
+  line-height: 48px;
+  text-indent: 5px;
+}
+
+.menuitem:hover, .menuitem:active {
+  background-color: #d9ceb1;
+  cursor: pointer;
+}
+
+
+.feed {
+  margin-left: 308px;
+  width: 652px;
+  background: none;
+  height: 100%;
+  position:absolute;
+}
+
+.tile {
+  margin: 12px;
+  margin-bottom: 0px;
+  display: block;
+  min-height: 64px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  line-height: 1.0;
+  position:relative;
+  background-color: #fff;
+  font-family: "Helvetica Neue", Arial, Sans-Serif;
+  color: #192022;
+  border-left-color: #203d36;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.tile-hdr {
+  margin: 0em;
+  margin-bottom: 0.8em;
+  font-size: 18px;
+  vertical-align: middle;
+
+}
+
+.tile-body {
+  margin: 0em;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.tile-imp {
+  color: #203d36;
+  font-weight: bold;
+}
