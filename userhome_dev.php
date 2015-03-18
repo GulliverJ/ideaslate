@@ -64,9 +64,9 @@
     <?php if( LoggedIn() ) { ?>
       <div class="profile" id="profile-panel" onclick="switchTo('profile-panel')">           <!--TODO: Profile details loaded from server -->
         <div style="float: left; width: 276px">
-          <img src="img/<?php GetProfileImage(); ?>" style="float: left; margin: 8px">
+          <img src="img/<?php echo GetProfileImage(); ?>" style="float: left; margin: 8px">
           <p class="signedin-as">Signed in as:</p>
-          <p class="signedin-name"><?php GetUserName(); ?></p>
+          <p class="signedin-name"><?php echo GetUserName(); ?></p>
         </div>
         <div id="profile-arrow" style="float: right; width: 20px; height: 64px">
           <img id="arrow" src="img/tri-icon.png" style="margin-top: 28px">
