@@ -85,6 +85,19 @@
 	 return false;
  }
  
+ // Gets the current username:
+ function GetUsername()
+ {
+	 return isset( $_SESSION['username'] ) ? $_SESSION['username'] : "Not Logged In";
+ }
+ 
+ // Gets the users profile image:
+ function GetProfileImage()
+ {
+	 // TODO: Implement this as a lookup to the SQL DB!
+	 return "testdp.jpg";
+ }
+ 
  // Checks to see if a user can be logged in, if they can be then return true and log them in
  // else return false:
  function UserLogin( $username, $password )

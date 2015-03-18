@@ -1,3 +1,13 @@
+<?php
+
+/*	Author: Thomas Russell <thomas.russell97@googlemail.com>; Gulliver Johnson <gulliver.johnson@gmail.com>
+ *	Purpose: Main page and template handling engine for the IdeaSlate website
+ */
+
+ include( 'user_manager.php' );
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,17 +59,27 @@
         <input type="text" class="quicksearch-in" placeholder="Quick Search">
       </div>
     </div>
+    
     <div class="wrapper toolbar">
+    <?php if( LoggedIn() ) { ?>
       <div class="profile" id="profile-panel" onclick="switchTo('profile-panel')">           <!--TODO: Profile details loaded from server -->
         <div style="float: left; width: 276px">
-          <img src="img/testdp.jpg" style="float: left; margin: 8px">
+          <img src="img/<?php GetProfileImage(); ?>" style="float: left; margin: 8px">
           <p class="signedin-as">Signed in as:</p>
-          <p class="signedin-name">Thomas Russell</p>
+          <p class="signedin-name"><?php GetUserName(); ?></p>
         </div>
         <div id="profile-arrow" style="float: right; width: 20px; height: 64px">
           <img id="arrow" src="img/tri-icon.png" style="margin-top: 28px">
         </div>
       </div>
+   <?php } else { ?>
+   	  <!--- TODO: Make this presentable, this is here purely for demonstrative purposes --->
+   	  <form class="login-form" id="login-form" action="user_manager.php" novalidate>
+      	<input name="username" class="form-username" type="text" placeholder="Username" title="Enter your username" required>
+        <input name="password" class="form-password" type="password" placeholder="Password" title="Enter your password" required>
+        <button type="submit" class="btn btn-default navform">Log In</button>
+      </form>
+   <?php } ?>
       <div class="panel-menu">
         <div class="panel-menu-item" onclick="switchTo('dashboard')">
           <img src="img/home-icon.png">
@@ -81,7 +101,7 @@
     <div class="wrapper">
       <div class="profile-panel-sidebar">
         <p style="color: #fff">Thomas Russell (and other profile stuff here) </p>
-        <button type="button">Log out</button>
+        <button type="button" id="log-out">Log out</button>
       </div>
       <div class="profile-panel-content">
       </div>
