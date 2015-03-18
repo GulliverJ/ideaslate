@@ -77,7 +77,7 @@
  {
 	 // Make sure the session is valid:
 	 CheckSession();
-	 if( isset( $_SESSION['username'] ) )
+	 if( isset( $_SESSION['user_id'] ) )
 	 {
 		 return true;
 	 }
@@ -104,8 +104,8 @@
 		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_statement = $connection->prepare( "SELECT avatar_name FROM users WHERE `username` = ?" );
-		 $sql_statement->execute( array( $_SESSION['username'] ) );
+		 $sql_statement = $connection->prepare( "SELECT avatar_name FROM users WHERE `id` = ?" );
+		 $sql_statement->execute( array( $_SESSION['user_id'] ) );
 		 
 		 $user = $sql_statement->fetch( PDO::FETCH_ASSOC );
 		 return strlen($user['avatar_name']) == 0 ? "testdp.jpg" : $user['avatar_name'];
@@ -130,7 +130,7 @@
 		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_query = $connection->prepare( "SELECT password FROM users WHERE `username` = ? LIMIT 1" );
+		 $sql_query = $connection->prepare( "SELECT id, password FROM users WHERE `username` = ? LIMIT 1" );
 		 $sql_query->execute( array( $username ) );
 		 
 	 
@@ -140,6 +140,7 @@
 		 {
 			 if( password_verify( $password, $user['password'] ) )
 			 {
+				 $_SESSION['user_id'] = (int)$user['id'];
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
 				 $_SESSION['created'] = time();
