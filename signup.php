@@ -45,6 +45,9 @@
 	 // Add the user to the database:
 	 $sql_statement = $connection->prepare( "INSERT INTO users( username, email, joined, password, verified, verification_id ) VALUES (?, ?, NOW(), ?, 0, ?)" );
 	 $sql_statement->execute( array( $username, $email, password_hash( $password, PASSWORD_DEFAULT ), $verification_id ) );
+	 
+	 // Send the verification email:
+	 SendVerificationEmail( $verification_id, $email );
  }
  catch( PDOException $e )
  {
@@ -69,6 +72,15 @@
 			 return $verification_string;
 		 }
 	 }
+ }
+ 
+ // Purpose: Send an email to the recipient containing the link to the verification
+ //	page with their ID:
+ function SendVerificationEmail( $verification_id, $email )
+ {
+	 $message = "<html><body>Please click or copy the following URL into your browser to verify your account: <a href=\"" . GetRootURL() . "/verify.php?id=" . $verification_id . "\">" . GetRootURL . "/verify.php?id=" . $verification_id . "</a></body></html>";
+	 
+	 mail( $email, "Account Verification", $message );
  }
  
 ?>

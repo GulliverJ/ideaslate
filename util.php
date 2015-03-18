@@ -31,4 +31,17 @@
 	 
 	 return $string;
  }
+ 
+ // Purpose: Get the root URL of website:
+ function GetRootURL()
+ {
+	 $page_url = "http";
+	 
+	 if( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == "on" ) {
+		 $page_url .= "s";
+	 }
+	 
+	 $page_url .= "://" . $_SERVER['SERVER_NAME'];
+	 return $page_url;
+ }
 ?>

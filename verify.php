@@ -5,7 +5,7 @@
  *			 to maintain and use the account.
  */
  
- $verification_id = isset( $_GET['verify'] ) ? $_GET['verify'] : "";
+ $verification_id = isset( $_GET['id'] ) ? $_GET['id'] : "";
  
  if( strlen( $verification_id ) != 30 )
  {
