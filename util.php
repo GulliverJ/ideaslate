@@ -18,4 +18,17 @@
 	 return array_slice( shuffle( range( $min, $max ) ), 0, $quantity );
  }
 
+ // Purpose: Generates a random string of $length characters:
+ function GenerateRandomString( $length )
+ {
+	 $alphabet = '0123456789abcdefghijklmnopqrstuvxyzABCDEFHIJKLMNOPQRSTUVWXYZ';
+	 $string = "";
+	 
+	 for( $i = 0; $i < $length; $i++ ) 
+	 {
+		 $string .= $alphabet[ rand( 0, strlen($alphabet)-1 ) ];
+	 }
+	 
+	 return $string;
+ }
 ?>

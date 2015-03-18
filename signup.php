@@ -39,13 +39,36 @@
 		 die( "There already exists an account under that email address" );
 	 }
 	 
+	 // Get the users verification ID:
+	 $verification_id = GenerateVerificationID( $connection );
+	 
 	 // Add the user to the database:
-	 $sql_statement = $connection->prepare( "INSERT INTO users( username, email, joined, password ) VALUES (?, ?, NOW(), ?)" );
-	 $sql_statement->execute( array( $username, $email, password_hash( $password, PASSWORD_DEFAULT ) ) );
+	 $sql_statement = $connection->prepare( "INSERT INTO users( username, email, joined, password, verified, verification_id ) VALUES (?, ?, NOW(), ?, false, ?)" );
+	 $sql_statement->execute( array( $username, $email, password_hash( $password, PASSWORD_DEFAULT ), $verification_id ) );
  }
  catch( PDOException $e )
  {
 	 die( "There was an internal database error whilst creating your user, error code (" . $e->getCode() . ")" );
+ }
+ 
+ require( 'util.php' );
+ 
+ // Purpose: Generate a random unique 30 character string to represent the individual
+ // who is trying to verify themselves:
+ function GenerateVerificationID( $connection ) 
+ {
+	 $sql_statement = $connection->prepare( "SELECT COUNT(*) FROM users WHERE `verification_id` = ? LIMIT 1" );
+	 while( false )
+	 {
+		 $verification_string = GenerateRandomString( 30 );
+		 
+		 // Check to see if there is a user with this random string:
+		 $sql_statement->execute( array( $verification_string ) );	 
+		 if( $sql_statement->fetchColumn() <= 0 )
+		 {
+			 return $verification_string;
+		 }
+	 }
  }
  
 ?>
