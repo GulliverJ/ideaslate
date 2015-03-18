@@ -78,7 +78,7 @@
  //	page with their ID:
  function SendVerificationEmail( $verification_id, $email )
  {
-	 $message = "<html><body>Please click or copy the following URL into your browser to verify your account: <a href=\"" . GetRootURL() . "/verify.php?id=" . $verification_id . "\">" . GetRootURL . "/verify.php?id=" . $verification_id . "</a></body></html>";
+	 $message = "<html><body>Please click or copy the following URL into your browser to verify your account: <a href=\"" . GetRootURL() . "/verify.php?id=" . $verification_id . "\">" . GetRootURL() . "/verify.php?id=" . $verification_id . "</a></body></html>";
 	 
 	 mail( $email, "Account Verification", $message );
  }
