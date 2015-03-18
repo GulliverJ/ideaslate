@@ -36,7 +36,7 @@
 		 throw Exception( "There doesn't exist a user with this verification ID" );
 	 }
 	 
-	 $sql_statement = $connection->prepare( "UPDATE users SET `verified` = true, `verification_id` = NULL WHERE `id` = ?" );
+	 $sql_statement = $connection->prepare( "UPDATE users SET `verified` = 1, `verification_id` = NULL WHERE `id` = ?" );
 	 $sql_statement->execute( array( (int)$row['id'] ) );
  }
  catch( Exception $e )

@@ -43,7 +43,7 @@
 	 $verification_id = GenerateVerificationID( $connection );
 	 
 	 // Add the user to the database:
-	 $sql_statement = $connection->prepare( "INSERT INTO users( username, email, joined, password, verified, verification_id ) VALUES (?, ?, NOW(), ?, false, ?)" );
+	 $sql_statement = $connection->prepare( "INSERT INTO users( username, email, joined, password, verified, verification_id ) VALUES (?, ?, NOW(), ?, 0, ?)" );
 	 $sql_statement->execute( array( $username, $email, password_hash( $password, PASSWORD_DEFAULT ), $verification_id ) );
  }
  catch( PDOException $e )
