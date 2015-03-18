@@ -94,8 +94,26 @@
  // Gets the users profile image:
  function GetProfileImage()
  {
-	 // TODO: Implement this as a lookup to the SQL DB!
-	 return "testdp.jpg";
+	 $server_details = include( 'server_details.php' );
+	 $server_name = $server_details['server_name'];
+	 $db_name = $server_details['db_name'];
+	 $db_username = $server_details['db_username'];
+	 $db_password = $server_details['db_password'];
+	 
+	 try {
+		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
+		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		 
+		 $sql_statement = $connection->prepare( "SELECT avatar_name FROM users WHERE `username` = ?" );
+		 $sql_statement->execute( array( $_SESSION['username'] ) );
+		 
+		 $user = $sql_statement->fetch( PDO::FETCH_ASSOC );
+		 return strlen($user['avatar_name']) == 0 ? "testdp.jpg" : $user['avatar_name'];
+	 }
+	 catch( PDOException $e )
+	 {
+		 return "";
+	 }
  }
  
  // Checks to see if a user can be logged in, if they can be then return true and log them in
