@@ -62,7 +62,7 @@
     
     <div class="wrapper toolbar">
     <?php if( LoggedIn() ) { ?>
-      <div class="profile" id="profile-panel" onclick="switchTo('profile-panel')">           <!--TODO: Profile details loaded from server -->
+      <div class="profile panel-selector" id="profile-panel" data-param="profile-panel">       <!--TODO: Profile details loaded from server -->
         <div style="float: left; width: 276px">
           <img src="img/<?php echo GetProfileImage(); ?>" style="float: left; margin: 8px">
           <p class="signedin-as">Signed in as:</p>
@@ -81,13 +81,13 @@
       </form>
    <?php } ?>
       <div class="panel-menu">
-        <div class="panel-menu-item" onclick="switchTo('dashboard')">
+        <div class="panel-menu-item panel-selector" data-param="dashboard">
           <img src="img/home-icon.png">
         </div>
-        <div class="panel-menu-item" onclick="switchTo('create-panel')">
+        <div class="panel-menu-item panel-selector" data-param="create-panel">
           <img src="img/create-icon.png">
         </div>
-        <div class="panel-menu-item" onclick="switchTo('search-panel')">
+        <div class="panel-menu-item panel-selector" data-param="search-panel">
           <img src="img/search-icon.png">
         </div>
       </div>

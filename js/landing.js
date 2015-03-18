@@ -9,6 +9,12 @@ function autoScrollTo(el) {
 // document is ready (also helps page-load speed):
 $(document).ready( function() {
 	
+	// Use this rather than onClick to take advantage of 
+	// event bubbling.
+	$('body').on( 'click', '.panel-selector', function(event) {
+		switchTo( $('this').attr('data-param') );
+	});
+	
 	function switchTo(panel) {
 		if (curView == panel) {
 		  if (curView == "dashboard") {
