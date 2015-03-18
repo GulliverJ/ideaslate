@@ -74,7 +74,7 @@
       </div>
    <?php } else { ?>
    	  <!--- TODO: Make this presentable, this is here purely for demonstrative purposes --->
-   	  <form class="login-form" id="login-form" action="user_manager.php" novalidate>
+   	  <form role="form" class="login-form" id="login-form" method="post" action="user_manager.php" novalidate>
       	<input name="username" class="form-username" type="text" placeholder="Username" title="Enter your username" required>
         <input name="password" class="form-password" type="password" placeholder="Password" title="Enter your password" required>
         <button type="submit" class="btn btn-default navform">Log In</button>
