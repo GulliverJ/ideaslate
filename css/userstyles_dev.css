@@ -32,6 +32,7 @@ hr {
 .header-base {
   margin: 0px;
   height: 160px;
+  max-height: 160px;
   width: 100%;
   background: none;
 }
@@ -164,15 +165,74 @@ p.signedin-name {
 }
 
 .create-panel {
-  color: #222;
-  background-color: #e0dbce;
-  background-image: url(../img/header_shadow.png);
-  background-repeat: repeat-x;
+  color: #333;
+  background-color: #fff;
   height: 100%;
   width: 100%;
   border-bottom-color: #e0dbce;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  font-family: "Helvetica Neue", Arial, Sans-Serif;
+}
+
+.create-header {
+  background: none;
+  width: 100%;
+  height: 172px;
+}
+
+label.create-label {
+  color: #222;
+  line-height: 3;
+  font-size: 14pt;
+  font-weight: bold;
+  display: block;
+}
+
+textarea {
+   font-family: inherit;
+   font-size: inherit;
+}
+
+.create-text-input {
+  width: 960px;
+  height: 64px;
+  line-height: 1.5;
+  font-size: 18pt;
+  text-align: center;
+  background: none;
+  border: none;
+
+}
+
+.create-text-area {
+  width: 960px;
+  height: 96px;
+  line-height: 1.3;
+  font-size: 14pt;
+  text-align: center;
+  border: none;
+  background: none;
+  resize: none;
+}
+
+.create-input {
+  border-color: #eee;
+  border-style: solid;
+  border-width: 1px;
+  width: 900px;
+  background-color: #fff;
+  line-height: 1.3;
+  padding: 12px;
+  resize: none;
+}
+
+.create-optional {
+  height: 352px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.3;
+  padding-bottom: 48px;
 }
 
 .dashboard {
