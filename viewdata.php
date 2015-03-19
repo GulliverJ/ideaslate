@@ -22,15 +22,22 @@ $password = "8bce3b67";
 $dbname = "isdevAnAqTBTyio8";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-     die("Connection failed: " . $conn->connect_error);
-} 
+ // DB connection info
+    $host = "eu-cdbr-azure-north-c.cloudapp.net";
+    $user = "b9b9fc737b7f9b";
+    $pwd = "8bce3b67";
+    $db = "isdevAnAqTBTyio8";
+    // Connect to database.
+    try {
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    }
+    catch(Exception $e){
+        die(var_dump($e));
+    }
 
 $sql = "SELECT user_id, username, email, fname, lname, joined, verified FROM users";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
      echo "<h1>Users</h1><br>"
      echo "<table><tr><th>user_id</th>
@@ -57,36 +64,6 @@ if ($result->num_rows > 0) {
      echo "Empty Set";
 }
 
-$sql = "SELECT project_id, title, abstract, description, status_id, created, upvotes, hidden FROM projects";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-     echo "<h1>Projects</h1><br>"
-     echo "<table><tr><th>project_id</th>
-                      <th>title</th>
-                      <th>abstract</th>
-                      <th>description</th>
-                      <th>status_id</th>
-                      <th>created</th>
-                      <th>upvotes</th>
-                      <th>hidden</th>
-                      </tr>";
-     // output data of each row
-     while($row = $result->fetch_assoc()) {
-         echo "<tr><td>" . $row["project_id"]. "</td>
-                   <td>" . $row["title"]. "</td>
-                   <td>" . $row["abstract"]. "</td>
-                   <td>" . $row["description"]. "</td>
-                   <td>" . $row["status_id"]. "</td>
-                   <td>" . $row["created"]. "</td>
-                   <td>" . $row["upvotes"]. "</td>
-                   <td>" . $row["hidden"]. "</td>
-                </tr>";
-     }
-     echo "</table><br><br>";
-} else {
-     echo "Empty Set";
-}
 
 ?>
 
