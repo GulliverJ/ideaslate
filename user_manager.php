@@ -15,7 +15,7 @@
  // log out:
  function CheckSession()
  {
-	 if( isset( $_SESSION['last_activity'] ) && (time() - $_SESSION['last_activity'] > 1800 ) )
+	 if( isset( $_SESSION['last_activity'] ) && (time() - $_SESSION['last_activity'] > 10080 ) )
 	 {
 		 // Log us out:
 		 Logout();
@@ -26,7 +26,7 @@
 		 $_SESSION['last_activity'] = time();
 	 }
 	 
-	 if( isset( $_SESSION['created'] ) && (time() - $_SESSION['created'] > 1800) )
+	 if( isset( $_SESSION['created'] ) && (time() - $_SESSION['created'] > 3600) )
 	 {
 		 session_regenerate_id( true );
 		 $_SESSION['created'] = time();
@@ -130,16 +130,22 @@
 		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_query = $connection->prepare( "SELECT id, password FROM users WHERE `username` = ? LIMIT 1" );
+		 $sql_query = $connection->prepare( "SELECT id, password, verified FROM users WHERE `username` = ? LIMIT 1" );
 		 $sql_query->execute( array( $username ) );
 		 
 	 
 		 // Does the user exist?
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
-		 {
+		 {			 
 			 if( password_verify( $password, $user['password'] ) )
 			 {
+				 if( !$user['verified'] )
+				 {
+					 // Make sure that the user has verified themselves:
+					 return false;
+				 }
+				 
 				 $_SESSION['user_id'] = (int)$user['id'];
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
