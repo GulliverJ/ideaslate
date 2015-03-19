@@ -1,0 +1,257 @@
+Listed alphabetically by table name
+
+//////////////////////////////////////////////////////////////////////////
+
+DEVELOPER_ROLES
+ - Used to see who's working which role on which projects
+ - If user_id == NULL, it indicates that the associated role is available
+   on the associated project
+
+ +------------+---------+------+-----+---------+-------+
+ | Field      | Type    | Null | Key | Default | Extra |
+ +------------+---------+------+-----+---------+-------+
+ | user_id    | int(11) | YES  | MUL | NULL    |       |
+ | project_id | int(11) | NO   | MUL | NULL    |       |
+ | role_id    | int(11) | NO   | MUL | 4       |       |
+ +------------+---------+------+-----+---------+-------+
+
+//////////////////////////////////////////////////////////////////////////
+
+PLATFORMS
+ - Stores key-value pairs of projects and their platforms
+
+ +----------------+-------------+------+-----+---------+-------+
+ | Field          | Type        | Null | Key | Default | Extra |
+ +----------------+-------------+------+-----+---------+-------+
+ | platform_id    | int(11)     | NO   | PRI | NULL    |       |
+ | platform_label | varchar(20) | NO   |     | NULL    |       |
+ +----------------+-------------+------+-----+---------+-------+
+
+Values:
+
+ +-------------+----------------+
+ | platform_id | platform_label |
+ +-------------+----------------+
+ |           0 | Web            |
+ |           1 | Windows        |
+ |           2 | Mac            |
+ |           3 | Linux          |
+ |           4 | Android        |
+ |           5 | Windows Phone  |
+ |           6 | iOS            |
+ |           7 | Pebble         |
+ |           8 | Arduino        |
+ |           9 | Raspberry Pi   |
+ +-------------+----------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+PROJECT_PLATFORMS
+ - Stores which platforms a project is being designed for
+
+ +-------------+---------+------+-----+---------+-------+
+ | Field       | Type    | Null | Key | Default | Extra |
+ +-------------+---------+------+-----+---------+-------+
+ | project_id  | int(11) | NO   | MUL | NULL    |       |
+ | platform_id | int(11) | NO   | MUL | NULL    |       |
+ +-------------+---------+------+-----+---------+-------+ 
+
+//////////////////////////////////////////////////////////////////////////
+
+PROJECT_SECTORS
+ - Stores which projects relate to which sector
+
+ +------------+---------+------+-----+---------+-------+
+ | Field      | Type    | Null | Key | Default | Extra |
+ +------------+---------+------+-----+---------+-------+
+ | project_id | int(11) | NO   | MUL | NULL    |       |
+ | sector_id  | int(11) | NO   | MUL | NULL    |       |
+ +------------+---------+------+-----+---------+-------+
+
+//////////////////////////////////////////////////////////////////////////
+
+PROJECT_TAGS
+ - Used by project managers/creators to describe the project
+
+ +------------+---------+------+-----+---------+-------+
+ | Field      | Type    | Null | Key | Default | Extra |
+ +------------+---------+------+-----+---------+-------+
+ | project_id | int(11) | NO   | MUL | NULL    |       |
+ | tag_id     | int(11) | NO   | MUL | NULL    |       |
+ +------------+---------+------+-----+---------+-------+
+
+//////////////////////////////////////////////////////////////////////////
+
+PROJECTS
+ - Stores details about individual projects
+
+ +-------------+--------------+------+-----+---------+----------------+
+ | Field       | Type         | Null | Key | Default | Extra          |
+ +-------------+--------------+------+-----+---------+----------------+
+ | project_id  | int(11)      | NO   | PRI | NULL    | auto_increment |
+ | title       | varchar(80)  | NO   |     | NULL    |                |
+ | abstract    | varchar(140) | NO   |     | NULL    |                |
+ | description | text         | YES  |     | NULL    |                |
+ | status_id   | int(11)      | NO   | MUL | 0       |                |
+ | created     | date         | NO   |     | NULL    |                |
+ | upvotes     | int(11)      | YES  |     | 0       |                |
+ | hidden      | tinyint(1)   | NO   |     | 0       |                |
+ +-------------+--------------+------+-----+---------+----------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+ROLES
+ - Basic key-value lookup table
+
+ +------------+-------------+------+-----+---------+-------+
+ | Field      | Type        | Null | Key | Default | Extra |
+ +------------+-------------+------+-----+---------+-------+
+ | role_id    | int(11)     | NO   | PRI | NULL    |       |
+ | role_label | varchar(30) | NO   |     | NULL    |       |
+ +------------+-------------+------+-----+---------+-------+
+
+Values:
+
+ +---------+---------------------+ 
+ | role_id | role_label          |
+ +---------+---------------------+
+ |       0 | Creator             |
+ |       1 | Project Manager     |
+ |       2 | Director            |
+ |       3 | Development Manager |
+ |       4 | General Developer   |
+ |       5 | Front-end Developer |
+ |       6 | Back-end Developer  |
+ |       7 | Software Engineer   |
+ |       8 | System Engineer     |
+ |       9 | Hardware Engineer   |
+ |      10 | Tester              |
+ +---------+---------------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+SECTORS
+ - Lookup table pairing IDs with labels
+
+ +--------------+-------------+------+-----+---------+-------+
+ | Field        | Type        | Null | Key | Default | Extra |
+ +--------------+-------------+------+-----+---------+-------+
+ | sector_id    | int(11)     | NO   | PRI | NULL    |       |
+ | sector_label | varchar(20) | NO   |     | NULL    |       |
+ +--------------+-------------+------+-----+---------+-------+  
+
+Values: (this is a limited list, for prototyping purposes only)
+
+ +-----------+----------------------+
+ | sector_id | sector_label         |
+ +-----------+----------------------+
+ |         0 | Technology           |
+ |         1 | Education            |
+ |         2 | Social Media         |
+ |         3 | News                 |
+ |         4 | Finance              |
+ |         5 | Legal                |
+ |         6 | Space                |
+ |         7 | Urban Infrastructure |
+ |         8 | Transport            |
+ |         9 | Residential          |
+ |        10 | Tourism              |
+ +-----------+----------------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+STATUS
+ - Lookup for indicating the developmental status of a project.
+
+ +--------------+-------------+------+-----+---------+-------+
+ | Field        | Type        | Null | Key | Default | Extra |
+ +--------------+-------------+------+-----+---------+-------+
+ | status_id    | int(11)     | NO   | PRI | NULL    |       |
+ | status_label | varchar(20) | NO   |     | NULL    |       |
+ +--------------+-------------+------+-----+---------+-------+
+
+Values:
+
+ +-----------+-------------------+
+ | status_id | status_label      |
+ +-----------+-------------------+
+ |         0 | Inactive          |
+ |         1 | In Development    |
+ |         2 | Alpha             |
+ |         3 | Beta              |
+ |         4 | Supported Release |
+ |         5 | Final Release     |
+ +-----------+-------------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+TAGS
+ - Stores a lookup of tag descriptors and their associated id
+
+ +-----------+-------------+------+-----+---------+-------+
+ | Field     | Type        | Null | Key | Default | Extra |
+ +-----------+-------------+------+-----+---------+-------+
+ | tag_id    | int(11)     | NO   | PRI | NULL    |       |
+ | tag_label | varchar(20) | NO   |     | NULL    |       |
+ +-----------+-------------+------+-----+---------+-------+ 
+
+Values: (to be expanded by user input, potentially; the following are for
+         the prototype mainly)
+
+ +--------+---------------------+
+ | tag_id | tag_label           |
+ +--------+---------------------+
+ |      0 | Ajax                |
+ |      1 | Assembly            |
+ |      2 | Bootstrap           |
+ |      3 | C                   |
+ |      4 | C++                 |
+ |      5 | C#                  |
+ |      6 | Django              |
+ |      7 | Distributed Systems |
+ |      8 | Fortran             |
+ |      9 | GUI                 |
+ |     10 | Groovy              |
+ |     11 | Haskell             |
+ |     12 | Java                |
+ |     13 | JavaScript          |
+ |     14 | Kernal              |
+ |     15 | Linux               |
+ |     16 | Lua                 |
+ |     17 | Machine Learning    |
+ |     18 | Operating Systems   |
+ |     19 | Qt                  |
+ |     20 | SQL                 |
+ +--------+---------------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+USER_TAGS
+ - Used by users to describe their skills and abilities
+
+ +---------+---------+------+-----+---------+-------+
+ | Field   | Type    | Null | Key | Default | Extra |
+ +---------+---------+------+-----+---------+-------+
+ | user_id | int(11) | NO   | MUL | NULL    |       |
+ | tag_id  | int(11) | NO   | MUL | NULL    |       |
+ +---------+---------+------+-----+---------+-------+
+
+//////////////////////////////////////////////////////////////////////////
+
+USERS
+ - Stores details about individual users
+
+ +-----------------+--------------+------+-----+---------+----------------+
+ | Field           | Type         | Null | Key | Default | Extra          |
+ +-----------------+--------------+------+-----+---------+----------------+
+ | user_id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+ | username        | varchar(50)  | NO   | UNI | NULL    |                |
+ | email           | varchar(50)  | NO   | UNI | NULL    |                |
+ | fname           | varchar(50)  | YES  |     | NULL    |                |
+ | lname           | varchar(50)  | YES  |     | NULL    |                |
+ | joined          | datetime     | YES  |     | NULL    |                |
+ | password        | varchar(512) | NO   |     | NULL    |                |
+ | avatar_name     | varchar(200) | YES  |     | NULL    |                |
+ | verified        | tinyint(1)   | NO   |     | NULL    |                |
+ | verification_id | varchar(30)  | YES  |     | NULL    |                |
+ +-----------------+--------------+------+-----+---------+----------------+
