@@ -15,10 +15,11 @@ body {
 <body>
 
 <?php
+echo "This is working";
 $servername = "eu-cdbr-azure-north-c.cloudapp.net";
 $username = "b9b9fc737b7f9b";
 $password = "8bce3b67";
-$dbname = "isdevanaqtbtyio8";
+$dbname = "isdevAnAqTBTyio8";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
