@@ -33,11 +33,11 @@ body {
     }
 
     //Users table
+    echo "<br><h2>Users</h2>";
     $sql_select = "SELECT user_id, username, email, fname, lname, joined, verified FROM users";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<br><h2>Users</h2>";
         echo "<table>";
         echo "<tr><th>user_id</th>";
         echo "<th>username</th>";
@@ -61,11 +61,11 @@ body {
     }
 
     //User Tags
+    echo "<br><h2>User Tags</h2>";
     $sql_select = "SELECT user_id, tag_id FROM user_tags";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<br><h2>User Tags</h2>";
         echo "<table>";
         echo "<tr><th>user_id</th>";
         echo "<th>tag_id</th></tr>";
@@ -79,11 +79,11 @@ body {
     }
 
     //Projects table
+    echo "<br><h2>Projects</h2>";
     $sql_select = "SELECT project_id, title, abstract, description, status_id, created, hidden FROM projects";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<br><h2>Projects</h2>";
         echo "<table>";
         echo "<tr><th>project_id</th>";
         echo "<th>title</th>";
@@ -107,11 +107,11 @@ body {
     }
 
     //Developer Roles
+    echo "<br><h2>Developer Roles</h2>";
     $sql_select = "SELECT user_id, project_id, role_id FROM developer_roles";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<br><h2>Developer Roles</h2>";
         echo "<table>";
         echo "<tr><th>user_id</th>";
         echo "<th>project_id</th>";
@@ -127,11 +127,11 @@ body {
     }
 
     //Project Sectors
+    echo "<br><h2>Project Sectors</h2>";
     $sql_select = "SELECT project_id, sector_id FROM project_sectors";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<br><h2>Project Sectors</h2>";
         echo "<table>";
         echo "<tr><th>project_id</th>";
         echo "<th>sector_id</th></tr>";
@@ -145,11 +145,11 @@ body {
     }
 
     //Project Tags
+    echo "<br><h2>Project Tags</h2>";
     $sql_select = "SELECT project_id, tag_id FROM project_tags";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<br><h2>Project Tags</h2>";
         echo "<table>";
         echo "<tr><th>project_id</th>";
         echo "<th>tag_id</th></tr>";
