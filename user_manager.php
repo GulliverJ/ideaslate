@@ -130,16 +130,22 @@
 		 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 		 $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		 
-		 $sql_query = $connection->prepare( "SELECT id, password FROM users WHERE `username` = ? LIMIT 1" );
+		 $sql_query = $connection->prepare( "SELECT id, password, verified FROM users WHERE `username` = ? LIMIT 1" );
 		 $sql_query->execute( array( $username ) );
 		 
 	 
 		 // Does the user exist?
 		 $result = $sql_query->setFetchMode( PDO::FETCH_ASSOC );
 		 if( $user = $sql_query->fetch() )
-		 {
+		 {			 
 			 if( password_verify( $password, $user['password'] ) )
 			 {
+				 if( !$user['verified'] )
+				 {
+					 // Make sure that the user has verified themselves:
+					 return false;
+				 }
+				 
 				 $_SESSION['user_id'] = (int)$user['id'];
 				 $_SESSION['username'] = $username;
 				 $_SESSION['last_activity'] = time();
