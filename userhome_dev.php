@@ -115,38 +115,121 @@
   </div>
 
   <div class="create-panel" style="display: none;">
-    <div class="wrapper">
-      <p>Create panel</p>
-
       <form name="create" method="post" action="" id="create-form">
-        <!-- Required -->
-        <input name="project-name" id="proj-name" type="text" placeholder="Name your project">
-        <input name="abstract" id="proj-abstract" type="text" maxlength="140" placeholder="Describe the project in 140 characters">
-        <!-- Optional -->
-        <input name="desc" id="proj-desc" type="text" placeholder="Write a detailed description">
-        <button type="submit" name="create">Create!</button>
-      </form>
 
-      <p>Sorry bro - should have done this as one of the first things... it'll be my focus when I'm next online. Things I think the form should have:</p>
-      <br>
-      <ul>
-        <li>REQUIRED: Project Name</li>
-        <li>REQURIED: 140-char abstract</li>
-        <li>Detailed description</li>
-        <li>Outline of requirements (list)</li>
-        <li>An option to upload a logo or icon</li>
-        <li>The platform(s) it'll run on</li>
-        <li>The sector(s) it relates to</li>
-        <li>Any tags they want to add (e.g. languages like C, Java, or descriptors like "responsive" or "machine learning")</li>
-        <li>The option to nominate a project manager by name/username (with a button to choose "me") - the nominated projman will need to accept the position before it's confirmed</li>
-        <li>The option to assign roles to named users (who will be notified of the nomination and need to accept before they're added)</li>
-        <li>The option to add open positions, so that it will be suggested to all users fitting the description</li>
-      </ul>
-      <br>
-      <p>I'm not sure, but I think it might be a good idea to have the last two options only available to the project manager; the person who has the idea might not necessarily know or be the best person to judge what kind of developers would be needed, nor how many. If the creator nominates themselves as the projman, the options to assign roles would become available; otherwise it would be up to the project manager when they accept the role, presumably through controls available on the project's page.</p>
-      <br>
-      
-    </div>
+        <div class="create-header">
+          <div style="border-bottom-color: #eee; border-bottom-style: solid; border-bottom-width: 1px;">
+            <div style="width: 960px; margin-left: auto; margin-right: auto"> 
+              <input class="create-text-input" name="project-name" id="proj-name" type="text" placeholder="Name your project">
+            </div>
+          </div>
+          <div style="border-bottom-color: #eee; border-bottom-style: solid; border-bottom-width: 1px;">
+            <div style="width: 960px; margin-left: auto; margin-right: auto"> 
+              <textarea class="create-text-area" name="abstract" id="proj-abstract" type="text" maxlength="140" placeholder="Describe the project in 140 characters"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-bottom-color: #eee; border-bottom-style: solid; border-bottom-width: 1px; background-color: #f8f8f8">
+          <div class="wrapper create-optional">
+
+            <label class="create-label">Description</label>
+            <textarea class="create-input" style="height: 300px" name="description" id="proj-desc" type="text" maxlength="1000" placeholder="Write a detailed description"></textarea>
+            <br>
+
+            <label class="create-label">Primary Requirements</label>
+            <input class="create-input" style="height: 24px" name="requirement_item" id="requirement" placeholder="Add a requirement" type="text">
+            <!-- TODO: Add a button to generate a duplicate input form, up to 6 primary requirements -->
+            <br>
+
+            <label class="create-label">Platform</label>
+            <div style="width: 400px; float: left; margin-left: 50px; display:inline">
+              <input type="checkbox" name="platform" value="0"> Web<br>
+              <input type="checkbox" name="platform" value="1"> Windows<br>
+              <input type="checkbox" name="platform" value="2"> Mac<br>
+              <input type="checkbox" name="platform" value="3"> Linux<br>
+              <input type="checkbox" name="platform" value="4"> Android
+            </div>
+            <div style="width: 400px; float: right; margin-right: 50px;">
+              <input type="checkbox" name="platform" value="5"> Windows Phone<br>
+              <input type="checkbox" name="platform" value="6"> iOS<br>
+              <input type="checkbox" name="platform" value="7"> Pebble<br>
+              <input type="checkbox" name="platform" value="8"> Arduino<br>
+              <input type="checkbox" name="platform" value="9"> Raspberry Pi
+            </div>
+            <br>
+
+            <label class="create-label">Sector</label>
+            <div style="width: 400px; float: left; margin-left: 50px; display:inline">
+              <input type="checkbox" name="platform" value="0"> Technology<br>
+              <input type="checkbox" name="platform" value="1"> Education<br>
+              <input type="checkbox" name="platform" value="2"> Social Media<br>
+              <input type="checkbox" name="platform" value="3"> News<br>
+              <input type="checkbox" name="platform" value="4"> Finance<br>
+              <input type="checkbox" name="platform" value="5"> Legal
+            </div>
+            <div style="width: 400px; float: right; margin-right: 50px;">
+              <input type="checkbox" name="platform" value="6"> Space<br>
+              <input type="checkbox" name="platform" value="7"> Urban Infrastructure<br>
+              <input type="checkbox" name="platform" value="8"> Transport<br>
+              <input type="checkbox" name="platform" value="9"> Residential<br>
+              <input type="checkbox" name="platform" value="10"> Tourism
+            </div>
+            <br>
+
+            <label class="create-label">Team Positions</label>
+            <div style="width: 500px; float: left">
+              <select name="position" class="create-input" style="width: 350px">
+                <option value="" selected disabled>Choose a role</option>
+                <option value="2">Directors</option>
+                <option value="3">Development Managers</option>
+                <option value="4">General Developers</option>
+                <option value="5">Front-end Developers</option>
+                <option value="6">Back-end Developers</option>
+                <option value="7">Software Engineers</option>
+                <option value="8">System Engineers</option>
+                <option value="9">Hardware Engineers</option>
+                <option value="10">Testers</option>
+              </select>
+              <input class="create-input" placeholder="None" style="width: 75px" type="number" min="1" max="20">
+            </div>
+            <div style="width: 400px; float: right">
+            <input class="create-input" style="width: 350px; float: left" type="text" placeholder="Nominate users to take this position">
+            <br>
+            <!-- TODO: As above, a button to add more user-nomination fields (unlimited number of people can be nominated for the associated role) -->
+            <!-- TODO: This entire section should be duplicable (you can add up to one for each position and specify the number) -->
+
+            <label class="create-label">Hidden</label>
+            <input type="checkbox" name="hidden" value="1">
+            <!-- TODO: Forgot about this on the first run; it'll be featured more prominently in the final design... -->
+
+            <!-- TODO: Tags - not quite sure how to go about it, but putting it off for now isn't a huge deal -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="wrapper" style="display: block; margin-bottom: 32px">
+          <label class="create-label">Nominate your Project Manager</label>
+          <div style="display:inline; font-family: 'Helvetica Neue', Arial, Sans-serif; color: #333">
+            <input type="radio" name="nominate-pm" style="margin-left: 24px;"> Me<br>
+            <input type="radio" name="nominate-pm" style="margin-left: 24px"> Someone else
+          </div>
+          <div style="display:inline;">
+            <input type="text" name="nominate-pm" placeholder="Search by name or username" class="create-input" style="width: 400px; margin-left: auto; margin-right: auto; float: right;">
+          </div>
+        </div>
+
+        <!-- TODO: Add a "Save as draft" button, which is always active, whilst the "Create" button will be disabled until all of the required fields have been completed (Title, abstract, and indication of who will be project manager (themselves, a nominee, or whether it is to be left open). By having the "Save as draft" function,  users can quickly jot down ideas (with any fields they choose, required or not) and then save it to come back to it later. These drafts would be listed in their "My Projects" view on the home panel, indicated incomplete by an icon. -->
+        <!-- TODO: The above requires extra database columns -->
+
+        <div style="border-top-color: #eee; border-top-style: solid; border-top-width: 1px;">
+          <div style="width: 250px; margin: auto; margin-top: 24px">
+            <button type="submit" name="create" style="width: 250px; height: 48px;">Create</button>
+          </div>
+        </div>
+
+      </form>
   </div>
 
   <div class="dashboard">

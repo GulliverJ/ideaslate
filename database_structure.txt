@@ -17,6 +17,47 @@ DEVELOPER_ROLES
 
 //////////////////////////////////////////////////////////////////////////
 
+PLATFORMS
+ - Stores key-value pairs of projects and their platforms
+
+ +----------------+-------------+------+-----+---------+-------+
+ | Field          | Type        | Null | Key | Default | Extra |
+ +----------------+-------------+------+-----+---------+-------+
+ | platform_id    | int(11)     | NO   | PRI | NULL    |       |
+ | platform_label | varchar(20) | NO   |     | NULL    |       |
+ +----------------+-------------+------+-----+---------+-------+
+
+Values:
+
+ +-------------+----------------+
+ | platform_id | platform_label |
+ +-------------+----------------+
+ |           0 | Web            |
+ |           1 | Windows        |
+ |           2 | Mac            |
+ |           3 | Linux          |
+ |           4 | Android        |
+ |           5 | Windows Phone  |
+ |           6 | iOS            |
+ |           7 | Pebble         |
+ |           8 | Arduino        |
+ |           9 | Raspberry Pi   |
+ +-------------+----------------+
+
+//////////////////////////////////////////////////////////////////////////
+
+PROJECT_PLATFORMS
+ - Stores which platforms a project is being designed for
+
+ +-------------+---------+------+-----+---------+-------+
+ | Field       | Type    | Null | Key | Default | Extra |
+ +-------------+---------+------+-----+---------+-------+
+ | project_id  | int(11) | NO   | MUL | NULL    |       |
+ | platform_id | int(11) | NO   | MUL | NULL    |       |
+ +-------------+---------+------+-----+---------+-------+ 
+
+//////////////////////////////////////////////////////////////////////////
+
 PROJECT_SECTORS
  - Stores which projects relate to which sector
 
