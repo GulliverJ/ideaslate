@@ -3,7 +3,9 @@
 <head>
 <style>
 table, th, td {
-     border: 1px solid black;
+     border-top: 1px solid gray;
+     padding-left: 5px;
+     padding-right: 5px;
 }
 
 body {
@@ -33,21 +35,31 @@ echo "<p>This is working 2</p>";
 
     echo "<p>This is working 3</p>";
 
-    $sql_select = "SELECT * FROM status";
+    $sql_select = "SELECT user_id, username, email, fname, lname, joined, verified FROM users";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<h2>People who are registered:</h2>";
+        echo "<h2>Users</h2>";
         echo "<table>";
-        echo "<tr><th>status_id</th>";
-        echo "<th>status_label</th></tr>";
+        echo "<tr><th>user_id</th>";
+        echo "<tr><th>username</th>";
+        echo "<tr><th>email</th>";
+        echo "<tr><th>fname</th>";
+        echo "<tr><th>lname</th>";
+        echo "<tr><th>joined</th>";
+        echo "<th>verified</th></tr>";
         foreach($results as $row) {
-            echo "<tr><td>".$row['status_id']."</td>";
-            echo "<td>".$row['status_label']."</td></tr>";
+            echo "<tr><td>".$row['user_id']."</td>";
+            echo "<td>".$row['username']."</td>";
+            echo "<td>".$row['email']."</td>";
+            echo "<td>".$row['fname']."</td>";
+            echo "<td>".$row['lname']."</td>";
+            echo "<td>".$row['joined']."</td>";
+            echo "<td>".$row['verified']."</td></tr>";
         }
         echo "</table>";
     } else {
-        echo "<h3>No one is currently registered.</h3>";
+        echo "<h3>Empty set</h3>";
     }
 
 
