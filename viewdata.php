@@ -17,7 +17,6 @@ body {
 <body>
 
 <?php
-echo "<p>This is working 2</p>";
 // Create connection
  // DB connection info
     $host = "eu-cdbr-azure-north-c.cloudapp.net";
@@ -33,20 +32,19 @@ echo "<p>This is working 2</p>";
         die(var_dump($e));
     }
 
-    echo "<p>This is working 3</p>";
-
+    //Users table
     $sql_select = "SELECT user_id, username, email, fname, lname, joined, verified FROM users";
     $stmt = $conn->query($sql_select);
     $results = $stmt->fetchAll(); 
     if(count($results) > 0) {
-        echo "<h2>Users</h2>";
+        echo "<br><h2>Users</h2>";
         echo "<table>";
         echo "<tr><th>user_id</th>";
-        echo "<tr><th>username</th>";
-        echo "<tr><th>email</th>";
-        echo "<tr><th>fname</th>";
-        echo "<tr><th>lname</th>";
-        echo "<tr><th>joined</th>";
+        echo "<th>username</th>";
+        echo "<th>email</th>";
+        echo "<th>fname</th>";
+        echo "<th>lname</th>";
+        echo "<th>joined</th>";
         echo "<th>verified</th></tr>";
         foreach($results as $row) {
             echo "<tr><td>".$row['user_id']."</td>";
@@ -62,8 +60,107 @@ echo "<p>This is working 2</p>";
         echo "<h3>Empty set</h3>";
     }
 
+    //User Tags
+    $sql_select = "SELECT user_id, tag_id FROM user_tags";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<br><h2>User Tags</h2>";
+        echo "<table>";
+        echo "<tr><th>user_id</th>";
+        echo "<th>tag_id</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['user_id']."</td>";
+            echo "<td>".$row['tag_id']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>Empty set</h3>";
+    }
 
+    //Projects table
+    $sql_select = "SELECT project_id, title, abstract, description, status_id, created, hidden FROM projects";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<br><h2>Projects</h2>";
+        echo "<table>";
+        echo "<tr><th>project_id</th>";
+        echo "<th>title</th>";
+        echo "<th>abstract</th>";
+        echo "<th>description</th>";
+        echo "<th>status_id</th>";
+        echo "<th>created</th>";
+        echo "<th>hidden</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['project_id']."</td>";
+            echo "<td>".$row['title']."</td>";
+            echo "<td>".$row['abstract']."</td>";
+            echo "<td>".$row['description']."</td>";
+            echo "<td>".$row['status_id']."</td>";
+            echo "<td>".$row['created']."</td>";
+            echo "<td>".$row['hidden']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>Empty set</h3>";
+    }
 
+    //Developer Roles
+    $sql_select = "SELECT user_id, project_id, role_id FROM developer_roles";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<br><h2>Developer Roles</h2>";
+        echo "<table>";
+        echo "<tr><th>user_id</th>";
+        echo "<th>project_id</th>";
+        echo "<th>role_id</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['user_id']."</td>";
+            echo "<td>".$row['project_id']."</td>";
+            echo "<td>".$row['role_id']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>Empty set</h3>";
+    }
+
+    //Project Sectors
+    $sql_select = "SELECT project_id, sector_id FROM project_sectors";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<br><h2>Project Sectors</h2>";
+        echo "<table>";
+        echo "<tr><th>project_id</th>";
+        echo "<th>sector_id</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['project_id']."</td>";
+            echo "<td>".$row['sector_id']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>Empty set</h3>";
+    }
+
+    //Project Tags
+    $sql_select = "SELECT project_id, tag_id FROM project_tags";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<br><h2>Project Tags</h2>";
+        echo "<table>";
+        echo "<tr><th>project_id</th>";
+        echo "<th>tag_id</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['project_id']."</td>";
+            echo "<td>".$row['tag_id']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>Empty set</h3>";
+    }
 
 ?>
 
