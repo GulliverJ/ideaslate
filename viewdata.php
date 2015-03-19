@@ -15,7 +15,7 @@ body {
 <body>
 
 <?php
-echo "<p>This is working</p>";
+echo "<p>This is working 2</p>";
 // Create connection
  // DB connection info
     $host = "eu-cdbr-azure-north-c.cloudapp.net";
@@ -32,8 +32,9 @@ echo "<p>This is working</p>";
     }
 
 $sql = "SELECT user_id, username, email, fname, lname, joined, verified FROM users";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
+$stmt = $conn->query($sql);
+$result = $stmt->fetchAll();
+if (count($result) > 0) {
      echo "<h1>Users</h1><br>"
      echo "<table><tr><th>user_id</th>
                       <th>username</th>
@@ -44,19 +45,19 @@ if ($result->num_rows > 0) {
                       <th>verified</th>
                       </tr>";
      // output data of each row
-     while($row = $result->fetch_assoc()) {
-         echo "<tr><td>" . $row["user_id"]. "</td>
-                   <td>" . $row["username"]. "</td>
-                   <td>" . $row["email"]. "</td>
-                   <td>" . $row["fname"]. "</td>
-                   <td>" . $row["lname"]. "</td>
-                   <td>" . $row["joined"]. "</td>
-                   <td>" . $row["verified"]. "</td>
+     foreach($result as $row) {}
+         echo "<tr><td>" . $row['user_id']. "</td>
+                   <td>" . $row['username']. "</td>
+                   <td>" . $row['email']. "</td>
+                   <td>" . $row['fname']. "</td>
+                   <td>" . $row['lname']. "</td>
+                   <td>" . $row['joined']. "</td>
+                   <td>" . $row['verified']. "</td>
                 </tr>";
      }
      echo "</table><br><br>";
 } else {
-     echo "Empty Set";
+     echo "<p>Empty Set<p>";
 }
 
 
