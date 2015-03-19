@@ -33,20 +33,24 @@ echo "<p>This is working 2</p>";
 
     echo "<p>This is working 3</p>";
 
-$sql = "SELECT user_id, username, email, fname, lname, joined, verified FROM users";
-$stmt = $conn->query($sql);
-$result = $stmt->fetchAll();
-if (count($result) > 0) {
-     echo "<h1>Users</h1><br>"
-     echo "<table><tr><th>user_id</th><th>username</th><th>email</th><th>fname</th><th>lname</th><th>joined</th><th>verified</th></tr>";
-     // output data of each row
-     foreach($result as $row) {}
-         echo "<tr><td>" . $row['user_id']. "</td><td>" . $row['username']. "</td><td>" . $row['email']. "</td><td>" . $row['fname']. "</td><td>" . $row['lname']. "</td><td>" . $row['joined']. "</td><td>" . $row['verified']. "</td></tr>";
-     }
-     echo "</table><br><br>";
-} else {
-     echo "<p>Empty Set<p>";
-}
+    $sql_select = "SELECT * FROM status";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<h2>People who are registered:</h2>";
+        echo "<table>";
+        echo "<tr><th>status_id</th>";
+        echo "<th>status_label</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['status_id']."</td>";
+            echo "<td>".$row['status_label']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>No one is currently registered.</h3>";
+    }
+
+
 
 
 ?>
