@@ -15,7 +15,7 @@
  // log out:
  function CheckSession()
  {
-	 if( isset( $_SESSION['last_activity'] ) && (time() - $_SESSION['last_activity'] > 1800 ) )
+	 if( isset( $_SESSION['last_activity'] ) && (time() - $_SESSION['last_activity'] > 10080 ) )
 	 {
 		 // Log us out:
 		 Logout();
@@ -26,7 +26,7 @@
 		 $_SESSION['last_activity'] = time();
 	 }
 	 
-	 if( isset( $_SESSION['created'] ) && (time() - $_SESSION['created'] > 1800) )
+	 if( isset( $_SESSION['created'] ) && (time() - $_SESSION['created'] > 3600) )
 	 {
 		 session_regenerate_id( true );
 		 $_SESSION['created'] = time();
