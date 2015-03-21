@@ -121,7 +121,7 @@
   --> 
 
   <div class="create-panel" style="display: none;">
-      <form name="create" method="post" action="" id="create-form">
+      <form name="create" method="post" action="project_submit.php" id="create-form">
 
         <div class="create-header">
           <div style="border-bottom-color: #eee; border-bottom-style: solid; border-bottom-width: 1px;">
@@ -150,36 +150,36 @@
 
             <label class="create-label">Platform</label>
             <div style="width: 400px; float: left; margin-left: 50px; display:inline">
-              <input type="checkbox" name="platform" value="0"> Web<br>
-              <input type="checkbox" name="platform" value="1"> Windows<br>
-              <input type="checkbox" name="platform" value="2"> Mac<br>
-              <input type="checkbox" name="platform" value="3"> Linux<br>
-              <input type="checkbox" name="platform" value="4"> Android
+              <input type="checkbox" name="platform[]" value="0"> Web<br>
+              <input type="checkbox" name="platform[]" value="1"> Windows<br>
+              <input type="checkbox" name="platform[]" value="2"> Mac<br>
+              <input type="checkbox" name="platform[]" value="3"> Linux<br>
+              <input type="checkbox" name="platform[]" value="4"> Android
             </div>
             <div style="width: 400px; float: right; margin-right: 50px;">
-              <input type="checkbox" name="platform" value="5"> Windows Phone<br>
-              <input type="checkbox" name="platform" value="6"> iOS<br>
-              <input type="checkbox" name="platform" value="7"> Pebble<br>
-              <input type="checkbox" name="platform" value="8"> Arduino<br>
-              <input type="checkbox" name="platform" value="9"> Raspberry Pi
+              <input type="checkbox" name="platform[]" value="5"> Windows Phone<br>
+              <input type="checkbox" name="platform[]" value="6"> iOS<br>
+              <input type="checkbox" name="platform[]" value="7"> Pebble<br>
+              <input type="checkbox" name="platform[]" value="8"> Arduino<br>
+              <input type="checkbox" name="platform[]" value="9"> Raspberry Pi
             </div>
             <br>
 
             <label class="create-label">Sector</label>
             <div style="width: 400px; float: left; margin-left: 50px; display:inline">
-              <input type="checkbox" name="platform" value="0"> Technology<br>
-              <input type="checkbox" name="platform" value="1"> Education<br>
-              <input type="checkbox" name="platform" value="2"> Social Media<br>
-              <input type="checkbox" name="platform" value="3"> News<br>
-              <input type="checkbox" name="platform" value="4"> Finance<br>
-              <input type="checkbox" name="platform" value="5"> Legal
+              <input type="checkbox" name="sector[]" value="0"> Technology<br>
+              <input type="checkbox" name="sector[]" value="1"> Education<br>
+              <input type="checkbox" name="sector[]" value="2"> Social Media<br>
+              <input type="checkbox" name="sector[]" value="3"> News<br>
+              <input type="checkbox" name="sector[]" value="4"> Finance<br>
+              <input type="checkbox" name="sector[]" value="5"> Legal
             </div>
             <div style="width: 400px; float: right; margin-right: 50px;">
-              <input type="checkbox" name="platform" value="6"> Space<br>
-              <input type="checkbox" name="platform" value="7"> Urban Infrastructure<br>
-              <input type="checkbox" name="platform" value="8"> Transport<br>
-              <input type="checkbox" name="platform" value="9"> Residential<br>
-              <input type="checkbox" name="platform" value="10"> Tourism
+              <input type="checkbox" name="sector[]" value="6"> Space<br>
+              <input type="checkbox" name="sector[]" value="7"> Urban Infrastructure<br>
+              <input type="checkbox" name="sector[]" value="8"> Transport<br>
+              <input type="checkbox" name="sector[]" value="9"> Residential<br>
+              <input type="checkbox" name="sector[]" value="10"> Tourism
             </div>
             <br>
 
