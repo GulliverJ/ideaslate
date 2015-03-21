@@ -73,7 +73,7 @@
         </div>
       </div>
    <?php } else { ?>
-   	  <!--- TODO: Make this presentable, this is here purely for demonstrative purposes --->
+   	  <!-- TODO: Make this presentable, this is here purely for demonstrative purposes -->
    	  <form role="form" class="login-form" id="login-form" method="post" action="user_manager.php" novalidate>
       	<input name="username" class="form-username" type="text" placeholder="Username" title="Enter your username" required>
         <input name="password" class="form-password" type="password" placeholder="Password" title="Enter your password" required>
@@ -113,6 +113,12 @@
       <p>Search panel</p>
     </div>
   </div>
+
+  <!--
+
+  TODO: NEWLY ADDED CREATE PAGE
+
+  --> 
 
   <div class="create-panel" style="display: none;">
       <form name="create" method="post" action="" id="create-form">
@@ -231,6 +237,12 @@
 
       </form>
   </div>
+
+  <!--
+
+  CREATE PAGE END
+  
+  --> 
 
   <div class="dashboard">
     <div class="wrapper">
