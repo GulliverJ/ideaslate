@@ -16,13 +16,10 @@
  $db_username = $server_details['db_username'];
  $db_password = $server_details['db_password'];
 
-
- echo "Test";
- 
  try {
 	 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 	 $connection->setAttributes( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	 
+	 var_dump($connection);
 	 $sql_statement = $connection->prepare( "SELECT COUNT(*) FROM projects WHERE `title` = ? LIMIT 1" );
 	 echo $sql_statement;
 	 $sql_statement->execute( array( $project_name ) );
