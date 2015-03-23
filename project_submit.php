@@ -15,6 +15,8 @@
  $db_name = $server_details['db_name'];
  $db_username = $server_details['db_username'];
  $db_password = $server_details['db_password'];
+
+ echo "Test";
  
  try {
 	 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
