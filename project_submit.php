@@ -49,7 +49,7 @@
 		 die( "A project with that title already exists" );
 	 }
 
-	 echo "test"
+	 echo "test";
 	 
 	 $sql_statement = $connection->prepare( "INSERT INTO projects (title, abstract, description, created) VALUES (?, ?, ?, NOW())" );
 	 echo $sql_statement;
