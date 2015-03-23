@@ -16,6 +16,7 @@
  $db_username = $server_details['db_username'];
  $db_password = $server_details['db_password'];
 
+
  echo "Test";
  
  try {
