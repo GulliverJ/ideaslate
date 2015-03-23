@@ -10,6 +10,8 @@
  $project_platforms = isset( $_POST['platform'] ) ? $_POST['platform'] : array();
  $project_sectors = isset( $_POST['sector'] ) ? $_POST['sector'] : array();
  
+
+ /*
  $server_details = include( 'server_details.php' );
  $server_name = $server_details['server_name'];
  $db_name = $server_details['db_name'];
@@ -20,6 +22,24 @@
 	 $connection = new PDO( "mysql:host=$server_name;dbname=$db_name", $db_username, $db_password );
 	 $connection->setAttributes( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	 var_dump($connection);
+
+	 */
+
+ $host = "eu-cdbr-azure-north-c.cloudapp.net";
+ $user = "b9b9fc737b7f9b";
+ $pwd = "8bce3b67";
+ $db = "isdevAnAqTBTyio8";
+    // Connect to database.
+ try {
+   $connection = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+   $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+ }
+ catch(Exception $e){
+   die(var_dump($e));
+ }
+
+ try {
+
 	 $sql_statement = $connection->prepare( "SELECT COUNT(*) FROM projects WHERE `title` = ? LIMIT 1" );
 	 echo $sql_statement;
 	 $sql_statement->execute( array( $project_name ) );
