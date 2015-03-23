@@ -162,6 +162,23 @@ body {
         echo "<h3>Empty set</h3>";
     }
 
+    //Project Platforms
+    echo "<br><h2>Project Platforms</h2>";
+    $sql_select = "SELECT project_id, platform_id FROM project_platforms";
+    $stmt = $conn->query($sql_select);
+    $results = $stmt->fetchAll(); 
+    if(count($results) > 0) {
+        echo "<table>";
+        echo "<tr><th>project_id</th>";
+        echo "<th>platform_id</th></tr>";
+        foreach($results as $row) {
+            echo "<tr><td>".$row['project_id']."</td>";
+            echo "<td>".$row['platform_id']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h3>Empty set</h3>";
+    }
 ?>
 
 </body>
