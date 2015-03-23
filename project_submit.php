@@ -42,7 +42,7 @@
 
 	 $sql_statement = $connection->prepare( "SELECT COUNT(*) FROM projects WHERE `title` = ? LIMIT 1" );
 	 echo $sql_statement;
-	 $sql_statement->execute( array( $project_name ) );
+	 $sql_statement->query( array( $project_name ) );
 	 
 	 if( $sql_statement->fetchColumn() > 0 )
 	 {
