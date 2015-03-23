@@ -29,10 +29,12 @@
 	 }
 	 
 	 $sql_statement = $connection->prepare( "INSERT INTO projects (title, abstract, description, created) VALUES (?, ?, ?, NOW())" );
+	 echo $sql_statement;
 	 $sql_statement->execute( array( $project_name, $project_abstract, $project_description ) );
 	 $project_id = $connection->lastInsertId();
 	 
 	 $sql_statement = $connection->prepare( "INSERT INTO project_platforms (project_id, platform_id) VALUES (?, ?)" );
+	 echo $sql_statement;
 	 foreach( $project_platforms as $platform )
 	 {
 		 // Insert each platform into the database:
@@ -40,6 +42,7 @@
 	 }
 	 
 	 $sql_statement = $connection->prepare( "INSERT INTO project_sectors (project_id, sector_id) VALUES (?, ?)" );
+	 echo $sql_statement;
 	 foreach( $project_sectors as $sector )
 	 {
 		 // Insert each sector into the database:
