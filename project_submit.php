@@ -51,7 +51,9 @@
 	 echo "test";
 	 
 	 $sql_statement = $connection->prepare( "INSERT INTO projects (title, abstract, description, created) VALUES (?, ?, ?, NOW())" );
+	 echo "test2";
 	 echo $sql_statement;
+	 echo "test3";
 	 $sql_statement->execute( array( $project_name, $project_abstract, $project_description ) );
 	 $project_id = $connection->lastInsertId();
 	 
